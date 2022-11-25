@@ -14,6 +14,14 @@
         <item name="cornerSizeBottomRight">15%</item>
     </style>
 
+    <style name="RoundedSquareTopLeft">
+        <item name="cornerSizeTopLeft">15%</item>
+    </style>
+
+    <style name="RoundedSquareBottomRight">
+        <item name="cornerSizeBottomRight">28%</item>
+    </style>
+
     <style name="CornerCut">
         <item name="cornerSize">15dp</item>
         <item name="cornerFamily">cut</item>
