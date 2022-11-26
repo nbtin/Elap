@@ -7,7 +7,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivBackgroundBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/background_login_blue" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivBackgroundWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,30 +26,30 @@
         app:srcCompat="@drawable/background_login_white" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvGreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome back"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/ivBackgroundWhite"
+        app:layout_constraintEnd_toEndOf="@+id/ivBackgroundBlue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="@+id/ivBackgroundBlue" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvGreet2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enjoy the shopping!"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/ivBackgroundWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tvGreet"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
@@ -59,10 +59,10 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/ivBackgroundBlue">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="15dp"
@@ -76,7 +76,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="15dp"
@@ -91,6 +91,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="28dp"
