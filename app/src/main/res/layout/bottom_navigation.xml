@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bar"
@@ -25,7 +25,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/homeBtn"
+                android:id="@+id/llHome"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
@@ -50,7 +50,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/profileBtn"
+                android:id="@+id/llProfile"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/icon_profile_colorize"
-                    tools:layout_weight="1" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -75,7 +75,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/friendBtn"
+                android:id="@+id/llNotification"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/icon_notification_colorize"
-                    tools:layout_weight="1" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/textView14"
@@ -100,7 +100,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/settingBtn"
+                android:id="@+id/llSetting"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
@@ -111,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/icon_setting_colorize"
-                    tools:layout_weight="1" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/textView15"

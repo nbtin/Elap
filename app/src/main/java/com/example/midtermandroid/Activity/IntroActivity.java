@@ -1,4 +1,4 @@
-package com.example.midtermandroid;
+package com.example.midtermandroid.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -6,6 +6,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.midtermandroid.R;
 
 public class IntroActivity extends AppCompatActivity {
 private ConstraintLayout clGetStarted;
@@ -18,7 +20,7 @@ private ConstraintLayout clGetStarted;
         clGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+                startActivity(new Intent(IntroActivity.this, MainActivity.class));
             }
         });
     }
