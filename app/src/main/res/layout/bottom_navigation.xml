@@ -36,13 +36,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/icon_home_colorize" />
+                    app:srcCompat="@drawable/ic_baseline_home_24" />
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Trang chủ"
+                    android:text="Home"
                     android:textAlignment="center"
                     android:textColor="#676767"
                     android:textSize="12sp"
@@ -60,14 +60,14 @@
                     android:id="@+id/imageView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icon_profile_colorize"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
                 <TextView
                     android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cá nhân"
+                    android:text="Profile"
                     android:textAlignment="center"
                     android:textColor="#676767"
                     android:textSize="12sp"
@@ -85,14 +85,14 @@
                     android:id="@+id/imageView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icon_notification_colorize"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Thông báo"
+                    android:text="Cart"
                     android:textAlignment="center"
                     android:textColor="#676767"
                     android:textSize="12sp"
@@ -110,14 +110,14 @@
                     android:id="@+id/imageView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/icon_setting_colorize"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_settings_24" />
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cài đặt"
+                    android:text="Setting"
                     android:textAlignment="center"
                     android:textColor="#676767"
                     android:textSize="12sp"

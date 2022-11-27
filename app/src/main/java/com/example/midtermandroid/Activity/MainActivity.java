@@ -7,21 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+import com.example.midtermandroid.Adapter.BestsellerAdapter;
 import com.example.midtermandroid.Adapter.BrandAdapter;
 import com.example.midtermandroid.Domain.BrandDomain;
+import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.R;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-private RecyclerView.Adapter adapter;
-private RecyclerView recyclerViewBrandList;
+private RecyclerView.Adapter adapter, adapterBestseller;
+private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         recyclerViewBrandList();
+        recycleViewBestseller();
     }
 
     private void recyclerViewBrandList() {
@@ -38,5 +42,21 @@ private RecyclerView recyclerViewBrandList;
 
         adapter = new BrandAdapter(brand);
         recyclerViewBrandList.setAdapter(adapter);
+    }
+    private void recycleViewBestseller(){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
+        recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
+
+        ArrayList<LaptopDomain> laptopList = new ArrayList<>();
+        laptopList.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        laptopList.add(new LaptopDomain("Asus TUF Gaming FX506LHB-HN188W", "lap_2", "i5 10300H/8GB/512GB/15.6\"FHD/GTX 1650 4GB/Win11", 17490000));
+        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "i5 11400H/8GB/512GB/15.6\"FHD/NVIDIA GeForce RTX 3050 4GB/Win10", 22490000));
+        laptopList.add(new LaptopDomain("Laptop MSI Modern 15 A5M 235VN", "lap_4", "5700U/8GB/512GB/15.6\"FHD/Win 11", 15890000));
+        laptopList.add(new LaptopDomain("Laptop Dell Vostro V5410", "lap_5", "i5 11320H/8GB/512GB/14.0\"FHD/Win 11", 20490000));
+        laptopList.add(new LaptopDomain("Lenovo Yoga Slim 7 Pro 14IHU5O", "lap_6", "i5 11300H/16GB/512GB/14\"2.8K OLED/Win 11", 20990000));
+
+        adapterBestseller = new BestsellerAdapter(laptopList);
+        recyclerViewBestsellerList.setAdapter((adapterBestseller));
     }
 }
