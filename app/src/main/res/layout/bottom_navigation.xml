@@ -29,6 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
+                android:clickable="true"
                 android:orientation="vertical">
 
                 <ImageView
@@ -54,6 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
+                android:clickable="true"
                 android:orientation="vertical">
 
                 <ImageView
@@ -75,10 +77,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/llNotification"
+                android:id="@+id/llCart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
+                android:clickable="true"
                 android:orientation="vertical">
 
                 <ImageView
@@ -104,6 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
+                android:clickable="true"
                 android:orientation="vertical">
 
                 <ImageView

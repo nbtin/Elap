@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.midtermandroid.Adapter.BestsellerAdapter;
 import com.example.midtermandroid.Adapter.BrandAdapter;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,46 @@ private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
 
         recyclerViewBrandList();
         recycleViewBestseller();
+        bottomNavigation();
+    }
+
+    private void bottomNavigation() {
+        LinearLayout homeBtn = findViewById(R.id.llHome);
+        LinearLayout profileBtn = findViewById(R.id.llProfile);
+        LinearLayout cartBtn = findViewById(R.id.llCart);
+        LinearLayout settingBtn = findViewById(R.id.llSetting);
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
+//                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this,CartActivity.class));
+                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        settingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void recyclerViewBrandList() {
