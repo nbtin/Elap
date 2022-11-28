@@ -14,7 +14,10 @@
         android:theme="@style/Theme.MidTermAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Activity.ShowDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.LoginActivity"

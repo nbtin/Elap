@@ -1,6 +1,8 @@
 package com.example.midtermandroid.Domain;
 
-public class LaptopDomain {
+import java.io.Serializable;
+
+public class LaptopDomain implements Serializable {
     private String title;
     private String pic;
     private String description;
