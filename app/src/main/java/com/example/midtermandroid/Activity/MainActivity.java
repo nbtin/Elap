@@ -95,7 +95,7 @@ private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
         ArrayList<LaptopDomain> laptopList = new ArrayList<>();
         laptopList.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
         laptopList.add(new LaptopDomain("Asus TUF Gaming FX506LHB-HN188W", "lap_2", "Intel core i5 10300H/8GB/512GB/15.6\"FHD/GTX 1650 4GB/Win 11", 17490000));
-        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "Intel core i5 11400H/8GB/512GB/15.6\"FHD/NVIDIA GeForce RTX 3050 4GB/Win 10", 22490000));
+        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "Intel core i5 11400H/8GB/512GB/15.6\"FHD/GeForce RTX 3050 4GB/Win 10", 22490000));
         laptopList.add(new LaptopDomain("Laptop MSI Modern 15 A5M 235VN", "lap_4", "AMD Ryzen 7 5700U/8GB/512GB/15.6\"FHD/./Win 11", 15890000));
         laptopList.add(new LaptopDomain("Laptop Dell Vostro V5410", "lap_5", "Intel core i5 11320H/8GB/512GB/14.0\"FHD/./Win 11", 20490000));
         laptopList.add(new LaptopDomain("Lenovo Yoga Slim 7 Pro 14IHU5O", "lap_6", "Intel core i5 11300H/16GB/512GB/14\"2.8K OLED/./Win 11", 20990000));
