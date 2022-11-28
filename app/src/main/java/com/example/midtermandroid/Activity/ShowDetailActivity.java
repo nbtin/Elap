@@ -15,7 +15,7 @@ import com.example.midtermandroid.R;
 
 public class ShowDetailActivity extends AppCompatActivity {
 private TextView tvAddToCart;
-private TextView tvTitleDetail, tvFeeDetail, tvDescriptionDetail;
+private TextView tvTitleDetail, tvFeeDetail, tvCPU, tvRAM, tvROM, tvGPU, tvOS, tvScreen;
 private ImageView ivPicDetail;
 private LaptopDomain object;
 int numberOrder = 1;
@@ -44,7 +44,20 @@ private ManagementCart managementCart;
 
         tvTitleDetail.setText(object.getTitle());
         tvFeeDetail.setText(String.valueOf(formatter(object.getFee())));
-        tvDescriptionDetail.setText(object.getDescription());
+
+        String [] token_detail = object.getDescription().split("/", -1);
+
+        tvCPU.setText(token_detail[0]);
+        tvRAM.setText(token_detail[1]);
+        tvROM.setText(token_detail[2]);
+        tvScreen.setText(token_detail[3]);
+        if (token_detail[4].equals(".")){
+            tvGPU.setText("");
+        }
+        else {
+            tvGPU.setText(token_detail[4]);
+        }
+        tvOS.setText(token_detail[5]);
 
         // numberOrder...
 
@@ -64,7 +77,13 @@ private ManagementCart managementCart;
 
         tvTitleDetail = findViewById(R.id.tvTitleDetail);
         tvFeeDetail = findViewById(R.id.tvFeeDetail);
-        tvDescriptionDetail = findViewById(R.id.tvDescriptionDetail);
+        tvCPU = findViewById(R.id.tvCPU);
+        tvRAM = findViewById(R.id.tvRAM);
+        tvROM = findViewById(R.id.tvROM);
+        tvScreen = findViewById(R.id.tvScreen);
+        tvGPU = findViewById(R.id.tvGPU);
+        tvOS = findViewById(R.id.tvOS);
+
         ivPicDetail = findViewById(R.id.ivPicDetail);
 
     }

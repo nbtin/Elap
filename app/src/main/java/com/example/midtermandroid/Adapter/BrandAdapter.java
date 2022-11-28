@@ -37,27 +37,27 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
         switch (position){
             case 0: {
                 picUrl = "brand_1";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.brand_background1));
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.bestseller_background));
                 break;
             }
             case 1: {
                 picUrl = "brand_2";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.brand_background2));
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.bestseller_background));
                 break;
             }
             case 2: {
                 picUrl = "brand_3";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.brand_background3));
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.bestseller_background));
                 break;
             }
             case 3: {
                 picUrl = "brand_4";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.brand_background4));
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.bestseller_background));
                 break;
             }
             case 4: {
                 picUrl = "brand_5";
-                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.brand_background5));
+                holder.mainLayout.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.bestseller_background));
                 break;
             }
         }
