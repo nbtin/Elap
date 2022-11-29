@@ -3,7 +3,9 @@ package com.example.midtermandroid.Helper;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool;
 import com.example.midtermandroid.Domain.LaptopDomain;
+import com.example.midtermandroid.Interface.ChangeNumber;
 import com.google.gson.internal.bind.ArrayTypeAdapter;
 
 import java.util.ArrayList;
@@ -41,5 +43,29 @@ public class ManagementCart {
 
     public ArrayList<LaptopDomain> getListCart(){
         return tinyDB.getListObject("CartList");
+    }
+
+    public void addNumberLaptop(ArrayList<LaptopDomain> laptopList, int position, ChangeNumber changeNumber){
+        laptopList.get(position).setNumberInCart(laptopList.get(position).getNumberInCart() + 1);
+        tinyDB.putListObject("CartList", laptopList);
+        changeNumber.changed();
+    }
+    public void minusNumberLaptop(ArrayList<LaptopDomain> laptopList, int position, ChangeNumber changeNumber){
+        if (laptopList.get(position).getNumberInCart() == 1){
+            laptopList.remove(position);
+        }
+        else {
+            laptopList.get(position).setNumberInCart(laptopList.get(position).getNumberInCart() - 1);
+        }
+        tinyDB.putListObject("CartList", laptopList);
+        changeNumber.changed();
+    }
+    public int getTotalFee(){
+        ArrayList<LaptopDomain> laptopList = getListCart();
+        int fee = 0;
+        for (int i = 0; i < laptopList.size(); i++){
+            fee += laptopList.get(i).getFee() * laptopList.get(i).getNumberInCart();
+        }
+        return fee;
     }
 }

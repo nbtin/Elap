@@ -58,8 +58,8 @@ private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
         cartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(MainActivity.this,CartActivity.class));
-                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this,CartActivity.class));
+//                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
             }
         });
 

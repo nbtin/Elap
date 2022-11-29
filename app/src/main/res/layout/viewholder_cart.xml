@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@drawable/bestseller_background"
+    android:elevation="4dp">
+
+    <ImageView
+        android:id="@+id/ivPicCart"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lap_1" />
+
+    <TextView
+        android:id="@+id/tvTitleCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="Title"
+        android:textColor="#373B54"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivPicCart"
+        app:layout_constraintTop_toTopOf="@+id/ivPicCart" />
+
+    <ImageView
+        android:id="@+id/ivAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMinus"
+        app:layout_constraintStart_toEndOf="@+id/tvNumber"
+        app:layout_constraintTop_toTopOf="@+id/ivMinus"
+        app:srcCompat="@drawable/ic_baseline_add_box_24" />
+
+    <ImageView
+        android:id="@+id/ivMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPicCart"
+        app:layout_constraintStart_toEndOf="@+id/ivPicCart"
+        app:srcCompat="@drawable/ic_baseline_indeterminate_check_box_24" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="1"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMinus"
+        app:layout_constraintStart_toEndOf="@+id/ivMinus"
+        app:layout_constraintTop_toTopOf="@+id/ivMinus" /><![CDATA[
+
+    TextView
+        android:id="@+id/tvItemFee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTitleCart"
+        app:layout_constraintEnd_toStartOf="@+id/textView24"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleCart" />
+
+    ]]>
+
+    <TextView
+        android:id="@+id/tvTotalFee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivAdd"
+        app:layout_constraintEnd_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toTopOf="@+id/ivAdd" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text=" đ"
+        android:textColor="#0763AC"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivAdd" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,7 @@
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3675" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.337" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/drawable/viewholder_bestseller.xml" value="0.3675" />
+        <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/activity_cart.xml" value="0.23783783783783785" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/activity_intro.xml" value="0.15" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/activity_login.xml" value="0.23783783783783785" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/activity_main.xml" value="0.22" />
@@ -29,6 +30,7 @@
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/bottom_navigation.xml" value="0.22" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/viewholder_bestseller.xml" value="0.23783783783783785" />
         <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/viewholder_brand.xml" value="0.23614864864864865" />
+        <entry key="..\:/Android_Studio/MidTermAndroid2/app/src/main/res/layout/viewholder_cart.xml" value="0.23716216216216215" />
       </map>
     </option>
   </component>
