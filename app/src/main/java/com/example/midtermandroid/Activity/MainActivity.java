@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 private RecyclerView.Adapter adapter, adapterBestseller;
 private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
-
+private boolean homeClicked = true, profileClicked = false, cartClicked = false, settingClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,40 +35,51 @@ private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
     }
 
     private void bottomNavigation() {
-        LinearLayout homeBtn = findViewById(R.id.llHome);
-        LinearLayout profileBtn = findViewById(R.id.llProfile);
-        LinearLayout cartBtn = findViewById(R.id.llCart);
-        LinearLayout settingBtn = findViewById(R.id.llSetting);
+        ImageButton homeBtn = findViewById(R.id.btnHome);
+        ImageButton profileBtn = findViewById(R.id.btnProfile);
+        ImageButton cartBtn = findViewById(R.id.btnCart);
+        ImageButton settingBtn = findViewById(R.id.btnSetting);
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
-//                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                if (!homeClicked) {
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                }
+//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
             }
         });
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!profileClicked) {
 //                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    profileClicked = true;
+                    }
             }
         });
 
         cartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,CartActivity.class));
-//                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                if (!cartClicked) {
+                    startActivity(new Intent(MainActivity.this,CartActivity.class));
+//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    cartClicked = true;
+                }
             }
         });
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!settingClicked) {
+                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
 //                startActivity(new Intent(MainActivity.this,SettingActivity.class));
-                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                    settingClicked = true;
+                }
             }
         });
     }

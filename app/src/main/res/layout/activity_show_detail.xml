@@ -4,7 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_white"
     tools:context=".Activity.ShowDetailActivity">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_white"
+        android:clickable="true"
+        android:translationZ="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -245,26 +259,38 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvRAM" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="TextView"
+                android:visibility="invisible" />
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/tvAddToCart"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/blue_button_light"
-        android:elevation="4dp"
-        android:gravity="center|center_horizontal|center_vertical"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/btn_background_blue_light"
         android:text="Add to Cart"
-        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/layoutInclude"
+        layout="@layout/bottom_navigation"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

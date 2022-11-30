@@ -74,7 +74,7 @@ public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.Vi
             title = itemView.findViewById(R.id.tvTitle);
             fee = itemView.findViewById(R.id.tvFee);
             pic = itemView.findViewById(R.id.ivPic);
-            viewBtn = itemView.findViewById(R.id.tvView);
+            viewBtn = itemView.findViewById(R.id.btnView);
         }
     }
 }

@@ -9,6 +9,10 @@
         <item name="cornerSize">10%</item>
     </style>
 
+    <style name="RoundedSquareBtn">
+        <item name="cornerSize">30%</item>
+    </style>
+
     <style name="RoundedSquareBottom">
         <item name="cornerSizeBottomLeft">15%</item>
         <item name="cornerSizeBottomRight">15%</item>

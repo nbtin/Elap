@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="@drawable/background_white"
         android:backgroundTint="#f6f6f6"
         app:fabCradleMargin="8dp"
         app:fabCradleRoundedCornerRadius="50dp"
@@ -32,11 +33,12 @@
                 android:clickable="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView5"
+                <ImageButton
+                    android:id="@+id/btnHome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
+                    android:background="@drawable/background_white"
                     app:srcCompat="@drawable/ic_baseline_home_24" />
 
                 <TextView
@@ -58,11 +60,12 @@
                 android:clickable="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView6"
+                <ImageButton
+                    android:id="@+id/btnProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/background_white"
                     app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 
                 <TextView
@@ -84,11 +87,12 @@
                 android:clickable="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView8"
+                <ImageButton
+                    android:id="@+id/btnCart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/background_white"
                     app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
 
                 <TextView
@@ -110,11 +114,12 @@
                 android:clickable="true"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView9"
+                <ImageButton
+                    android:id="@+id/btnSetting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/background_white"
                     app:srcCompat="@drawable/ic_baseline_settings_24" />
 
                 <TextView

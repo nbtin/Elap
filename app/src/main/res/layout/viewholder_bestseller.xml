@@ -56,22 +56,20 @@
         app:layout_constraintStart_toEndOf="@+id/tvFee"
         app:layout_constraintTop_toTopOf="@+id/tvFee" />
 
-    <TextView
-        android:id="@+id/tvView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/blue_button"
-        android:paddingStart="10dp"
-        android:paddingTop="3dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="3dp"
-        android:text="View"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/btn_background_blue_light"
+        android:text="Detail"
         android:textColor="#FFFFFF"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ivPic"
         app:layout_constraintStart_toStartOf="@+id/ivPic"
-        app:layout_constraintTop_toBottomOf="@+id/tvFee" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFee"
+        android:layout_marginBottom="4dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

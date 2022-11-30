@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -19,11 +20,12 @@ import com.example.midtermandroid.Interface.ChangeNumber;
 import com.example.midtermandroid.R;
 
 public class CartActivity extends AppCompatActivity {
-private RecyclerView.Adapter adapter;
-private RecyclerView recyclerViewList;
-private ManagementCart managementCart;
-TextView tvSubtotal, tvDelivery, tvTotal, tvEmpty, tvCheckout;
-private ScrollView scrollView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView recyclerViewList;
+    private ManagementCart managementCart;
+    TextView tvSubtotal, tvDelivery, tvTotal, tvEmpty, tvCheckout;
+    private ScrollView scrollView;
+    private boolean homeClicked = false, profileClicked = false, cartClicked = true, settingClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +38,11 @@ private ScrollView scrollView;
         CalculateCart();
         bottomNavigation();
 
-        tvCheckout = findViewById(R.id.tvCheckout);
+        tvCheckout = findViewById(R.id.btnCheckout);
         tvCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(CartActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -92,40 +94,52 @@ private ScrollView scrollView;
     }
 
     private void bottomNavigation() {
-        LinearLayout homeBtn = findViewById(R.id.llHome);
-        LinearLayout profileBtn = findViewById(R.id.llProfile);
-        LinearLayout cartBtn = findViewById(R.id.llCart);
-        LinearLayout settingBtn = findViewById(R.id.llSetting);
+        ImageButton homeBtn = findViewById(R.id.btnHome);
+        ImageButton profileBtn = findViewById(R.id.btnProfile);
+        ImageButton cartBtn = findViewById(R.id.btnCart);
+        ImageButton settingBtn = findViewById(R.id.btnSetting);
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!homeClicked){
                 startActivity(new Intent(CartActivity.this, MainActivity.class));
-//                Toast.makeText(MainActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    homeClicked = true;
+                }
             }
         });
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!profileClicked){
 //                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                Toast.makeText(CartActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    profileClicked = true;
+                }
             }
         });
 
         cartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!cartClicked){
                 startActivity(new Intent(CartActivity.this,CartActivity.class));
-//                Toast.makeText(CartActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    cartClicked = false;
+                }
             }
         });
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!settingClicked){
 //                startActivity(new Intent(MainActivity.this,SettingActivity.class));
-                Toast.makeText(CartActivity.this, "This feature is not developed yet!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    settingClicked = true;
+                }
             }
         });
     }
