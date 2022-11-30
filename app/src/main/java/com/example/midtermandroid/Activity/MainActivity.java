@@ -64,8 +64,8 @@ private boolean homeClicked = true, profileClicked = false, cartClicked = false,
         cartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!cartClicked) {
                     startActivity(new Intent(MainActivity.this,CartActivity.class));
+                if (!cartClicked) {
 //                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     cartClicked = true;
                 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_white"
     tools:context=".Activity.CartActivity">
 
     <ScrollView
@@ -41,6 +42,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -136,6 +138,16 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:background="@drawable/background_strikethrough_text"
+                        android:text=" 35,000 đ "
+                        android:textColor="#636363"
+                        android:textSize="16sp" />
+
+                    <TextView
                         android:id="@+id/tvDelivery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -171,14 +183,14 @@
 
     <TextView
         android:id="@+id/tvEmpty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:text="Your cart is empty!"
         android:textAlignment="center"
         android:textColor="#616161"
         android:textSize="20sp"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView4"
         app:layout_constraintEnd_toEndOf="@+id/scrollView4"
         app:layout_constraintStart_toStartOf="parent"

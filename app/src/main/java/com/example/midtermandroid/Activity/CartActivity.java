@@ -1,6 +1,7 @@
 package com.example.midtermandroid.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -23,7 +25,9 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RecyclerView recyclerViewList;
     private ManagementCart managementCart;
-    TextView tvSubtotal, tvDelivery, tvTotal, tvEmpty, tvCheckout;
+    TextView tvSubtotal, tvDelivery, tvTotal, tvEmpty;
+    Button btnCheckout;
+    ConstraintLayout clBill;
     private ScrollView scrollView;
     private boolean homeClicked = false, profileClicked = false, cartClicked = true, settingClicked = false;
     @Override
@@ -38,8 +42,8 @@ public class CartActivity extends AppCompatActivity {
         CalculateCart();
         bottomNavigation();
 
-        tvCheckout = findViewById(R.id.btnCheckout);
-        tvCheckout.setOnClickListener(new View.OnClickListener() {
+        btnCheckout = findViewById(R.id.btnCheckout);
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
@@ -59,6 +63,7 @@ public class CartActivity extends AppCompatActivity {
         tvTotal = findViewById(R.id.tvTotal);
         tvEmpty = findViewById(R.id.tvEmpty);
         scrollView = findViewById(R.id.scrollView4);
+        clBill = findViewById(R.id.clBill);
     }
 
     private void initList(){
@@ -72,9 +77,9 @@ public class CartActivity extends AppCompatActivity {
         });
 
         recyclerViewList.setAdapter(adapter);
-        if (managementCart.getListCart().isEmpty()){
-            tvEmpty.setVisibility(View.VISIBLE);
+        if (managementCart.getListCart().size() == 0){
             scrollView.setVisibility(View.GONE);
+            tvEmpty.setVisibility(View.VISIBLE);
         }
         else {
             tvEmpty.setVisibility(View.GONE);
@@ -83,7 +88,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void CalculateCart(){
-        int delivery = 10000;
+        int delivery = 0;
 
         int itemTotal = managementCart.getTotalFee();
         int total = managementCart.getTotalFee() + delivery;
