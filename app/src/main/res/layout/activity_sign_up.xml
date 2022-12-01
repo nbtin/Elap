@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LoginActivity">
+    tools:context=".Activity.SignUpActivity">
 
     <ImageView
         android:id="@+id/imageView10"
@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:shapeAppearanceOverlay="@style/RoundedSquareTopLeft"
         app:srcCompat="@drawable/background_login_white" />
@@ -55,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Welcome back"
+        android:text="Sign up"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -63,19 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
-    <TextView
-        android:id="@+id/tvGreet2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enjoy the shopping!"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/ivBackgroundWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGreet"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView4"
@@ -95,12 +83,13 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/signUp_btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <EditText
-            android:id="@+id/etUsername"
+            android:id="@+id/signUp_etUsername"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="15dp"
@@ -115,7 +104,7 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/signUp_etPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/background_input"
@@ -127,103 +116,42 @@
             android:textColorHint="#888888"
             android:textSize="18sp"
             android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/signUp_etName"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:background="@drawable/background_input"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvForgotPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Forgot your password?"
-        android:textColor="#0037A5"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgotPass">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
-            app:srcCompat="@drawable/facebook" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/google" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/apple" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/signUp_btnRegister"
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="26dp"
         android:backgroundTint="@color/btn_background_blue_light"
-        android:text="Login"
+        android:text="Sign up"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBackgroundWhite"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-
-        android:layout_marginStart="26dp"
-        android:layout_marginEnd="26dp"
-        android:backgroundTint="@color/btn_background_blue_extra_light"
-        android:text="Don't have an account? Register one!"
-        android:textColor="#FFFFFF"
-        android:textSize="13sp"
-        android:textStyle="normal"
-        app:cornerRadius="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
+        app:layout_constraintTop_toBottomOf="@+id/ivBackgroundBlue"
+        app:layout_constraintVertical_bias="0.402"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,6 +18,7 @@ import com.example.midtermandroid.Activity.ShowDetailActivity;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,9 +46,10 @@ public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.Vi
 //        int feeValue = laptopDomains.get(position).getFee();
         holder.fee.setText(String.valueOf(formatter(laptopDomains.get(position).getFee())));
 
-        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(laptopDomains.get(position).getPic(), "drawable", holder.itemView.getContext().getPackageName());
+//        int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(laptopDomains.get(position).getPic(), "drawable", holder.itemView.getContext().getPackageName());
+//        Glide.with(holder.itemView.getContext()).load(drawableResourceId).into(holder.pic);
 
-        Glide.with(holder.itemView.getContext()).load(drawableResourceId).into(holder.pic);
+        Picasso.with(holder.itemView.getContext()).load(laptopDomains.get(position).getPic()).into(holder.pic);
 
         holder.viewBtn.setOnClickListener(new View.OnClickListener() {
             @Override

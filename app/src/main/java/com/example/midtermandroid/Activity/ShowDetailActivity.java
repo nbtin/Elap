@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Helper.ManagementCart;
 import com.example.midtermandroid.R;
+import com.squareup.picasso.Picasso;
 
 public class ShowDetailActivity extends AppCompatActivity {
     private Button btnAddToCart;
@@ -49,7 +50,8 @@ public class ShowDetailActivity extends AppCompatActivity {
         object = (LaptopDomain) getIntent().getSerializableExtra("object");
 
         int drawableResourceId = this.getResources().getIdentifier(object.getPic(), "drawable", this.getPackageName());
-        Glide.with(this).load(drawableResourceId).into(ivPicDetail);
+//        Glide.with(this).load(drawableResourceId).into(ivPicDetail);
+        Picasso.with(this).load(object.getPic()).into(ivPicDetail);
 
         tvTitleDetail.setText(object.getTitle());
         tvFeeDetail.setText(String.valueOf(formatter(object.getFee())));

@@ -1,5 +1,7 @@
 package com.example.midtermandroid.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,25 +11,106 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.midtermandroid.Adapter.BestsellerAdapter;
 import com.example.midtermandroid.Adapter.BrandAdapter;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.Domain.LaptopDomain;
+import com.example.midtermandroid.Domain.UserDomain;
 import com.example.midtermandroid.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-private RecyclerView.Adapter adapter, adapterBestseller;
-private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
-private boolean homeClicked = true, profileClicked = false, cartClicked = false, settingClicked = false;
+    private RecyclerView.Adapter adapter, adapterBestseller;
+    private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
+    private boolean homeClicked = true, profileClicked = false, cartClicked = false, settingClicked = false;
+    private TextView tvUsername;
+
+    ArrayList<LaptopDomain> laptopList;
+
+
+    private void mappingXML() {
+        tvUsername = findViewById(R.id.tvUsername);
+    }
+
+    private void init() {
+        FirebaseUser firebaseUser = LoginActivity.mAuthentication.getCurrentUser();
+
+        DatabaseReference databaseRef = FirebaseDatabase
+                .getInstance("https://elap-7b6f1-default-rtdb.asia-southeast1.firebasedatabase.app")
+                .getReference("users");
+
+        Query query = databaseRef.orderByChild("email").equalTo(firebaseUser.getEmail());
+
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if (LoginActivity.user == null) {
+                    LoginActivity.user = new UserDomain();
+                }
+
+                LoginActivity.user.update(snapshot.getValue(UserDomain.class));
+
+               try {
+                    tvUsername.setText(LoginActivity.user.getName());
+                } catch (NullPointerException exception) {
+                    System.err.println(exception.toString());
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                if (LoginActivity.user == null) {
+                    LoginActivity.user = new UserDomain();
+                }
+
+                LoginActivity.user.update(snapshot.getValue(UserDomain.class));
+
+                try {
+                    tvUsername.setText(LoginActivity.user.getName());
+                } catch (NullPointerException exception) {
+                    System.err.println(exception.toString());
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(MainActivity.this, "Account has been deleted!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Toast.makeText(MainActivity.this, "Account has been deleted!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "Action has been cancelled!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mappingXML();
+
+        init();
 
         recyclerViewBrandList();
         recycleViewBestseller();
@@ -57,7 +140,7 @@ private boolean homeClicked = true, profileClicked = false, cartClicked = false,
 //                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                     Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     profileClicked = true;
-                    }
+                }
             }
         });
 
@@ -65,7 +148,7 @@ private boolean homeClicked = true, profileClicked = false, cartClicked = false,
             @Override
             public void onClick(View view) {
                 if (!cartClicked) {
-                    startActivity(new Intent(MainActivity.this,CartActivity.class));
+                    startActivity(new Intent(MainActivity.this, CartActivity.class));
 //                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     cartClicked = true;
                 }
@@ -99,20 +182,61 @@ private boolean homeClicked = true, profileClicked = false, cartClicked = false,
         adapter = new BrandAdapter(brand);
         recyclerViewBrandList.setAdapter(adapter);
     }
-    private void recycleViewBestseller(){
+
+    private void recycleViewBestseller() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
         recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
 
-        ArrayList<LaptopDomain> laptopList = new ArrayList<>();
-        laptopList.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
-        laptopList.add(new LaptopDomain("Asus TUF Gaming FX506LHB-HN188W", "lap_2", "Intel core i5 10300H/8GB/512GB/15.6\"FHD/GTX 1650 4GB/Win 11", 17490000));
-        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "Intel core i5 11400H/8GB/512GB/15.6\"FHD/GeForce RTX 3050 4GB/Win 10", 22490000));
-        laptopList.add(new LaptopDomain("Laptop MSI Modern 15 A5M 235VN", "lap_4", "AMD Ryzen 7 5700U/8GB/512GB/15.6\"FHD/./Win 11", 15890000));
-        laptopList.add(new LaptopDomain("Laptop Dell Vostro V5410", "lap_5", "Intel core i5 11320H/8GB/512GB/14.0\"FHD/./Win 11", 20490000));
-        laptopList.add(new LaptopDomain("Lenovo Yoga Slim 7 Pro 14IHU5O", "lap_6", "Intel core i5 11300H/16GB/512GB/14\"2.8K OLED/./Win 11", 20990000));
 
+//        laptopList.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+//        laptopList.add(new LaptopDomain("Asus TUF Gaming FX506LHB-HN188W", "lap_2", "Intel core i5 10300H/8GB/512GB/15.6\"FHD/GTX 1650 4GB/Win 11", 17490000));
+//        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "Intel core i5 11400H/8GB/512GB/15.6\"FHD/GeForce RTX 3050 4GB/Win 10", 22490000));
+//        laptopList.add(new LaptopDomain("Laptop MSI Modern 15 A5M 235VN", "lap_4", "AMD Ryzen 7 5700U/8GB/512GB/15.6\"FHD/./Win 11", 15890000));
+//        laptopList.add(new LaptopDomain("Laptop Dell Vostro V5410", "lap_5", "Intel core i5 11320H/8GB/512GB/14.0\"FHD/./Win 11", 20490000));
+//        laptopList.add(new LaptopDomain("Lenovo Yoga Slim 7 Pro 14IHU5O", "lap_6", "Intel core i5 11300H/16GB/512GB/14\"2.8K OLED/./Win 11", 20990000));
+
+        laptopList = new ArrayList<>();
         adapterBestseller = new BestsellerAdapter(laptopList);
         recyclerViewBestsellerList.setAdapter((adapterBestseller));
+
+        loadLaptopData();
+    }
+
+    private void loadLaptopData(){
+
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://elap-7b6f1-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference laptopsRef = database.getReference("laptops");
+
+        laptopsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
+                laptopList.add(new LaptopDomain(laptopDomain));
+                adapterBestseller.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

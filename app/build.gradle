@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -40,4 +41,21 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Add the dependency for the Realtime Database library
+    implementation 'com.google.firebase:firebase-database'
+
+    // Add the dependency for the Firebase Authentication library
+    implementation 'com.google.firebase:firebase-auth'
+
+    // Add the dependency for the Cloud Storage library
+    implementation 'com.google.firebase:firebase-storage'
+
+    // Also add the dependency for the Google Play services library and specify its version
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+
+    // Add dependency to download image from uri
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

@@ -9,6 +9,17 @@ public class LaptopDomain implements Serializable {
     private int fee;
     private int numberInCart;
 
+    public LaptopDomain(){
+
+    }
+
+    public LaptopDomain(LaptopDomain other){
+        this.title = other.title;
+        this.pic = other.pic;
+        this.description = other.description;
+        this.fee = other.fee;
+    }
+
     public LaptopDomain(String title, String pic, String description, int fee) {
         this.title = title;
         this.pic = pic;
