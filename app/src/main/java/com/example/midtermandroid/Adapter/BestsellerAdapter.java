@@ -59,6 +59,15 @@ public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.Vi
                 holder.itemView.getContext().startActivity(intent);
             }
         });
+
+        holder.clLaptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailActivity.class);
+                intent.putExtra("object", laptopDomains.get(position));
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -70,6 +79,7 @@ public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.Vi
         TextView title, fee;
         ImageView pic;
         TextView viewBtn;
+        ConstraintLayout clLaptop;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +87,7 @@ public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.Vi
             fee = itemView.findViewById(R.id.tvFee);
             pic = itemView.findViewById(R.id.ivPic);
             viewBtn = itemView.findViewById(R.id.btnView);
+            clLaptop = itemView.findViewById(R.id.clLaptop);
         }
     }
 }

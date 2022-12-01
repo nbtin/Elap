@@ -140,15 +140,15 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                     Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     profileClicked = true;
-                }
+                    }
             }
         });
 
         cartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    startActivity(new Intent(MainActivity.this,CartActivity.class));
                 if (!cartClicked) {
-                    startActivity(new Intent(MainActivity.this, CartActivity.class));
 //                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     cartClicked = true;
                 }
@@ -182,8 +182,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new BrandAdapter(brand);
         recyclerViewBrandList.setAdapter(adapter);
     }
-
-    private void recycleViewBestseller() {
+    private void recycleViewBestseller(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
         recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
