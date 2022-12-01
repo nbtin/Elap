@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="8dp"
     android:background="@drawable/bestseller_background"
     android:elevation="4dp">
 
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Title"
         android:textColor="#373B54"
         android:textSize="18sp"
@@ -47,7 +47,7 @@
         android:id="@+id/ivMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivPicCart"
         app:layout_constraintStart_toEndOf="@+id/ivPicCart"
         app:srcCompat="@drawable/ic_baseline_indeterminate_check_box_24" />
