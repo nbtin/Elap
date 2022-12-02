@@ -112,9 +112,20 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
+        logOut();
         recyclerViewBrandList();
         recycleViewBestseller();
         bottomNavigation();
+    }
+
+    private void logOut(){
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginActivity.mAuthentication.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+        });
     }
 
     private void bottomNavigation() {

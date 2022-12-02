@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean homeClicked = false, profileClicked = true, cartClicked = false, mapClicked = false;
     private TextView tvUsername1, tvUsername2, tvEmail;
     private Button btnEditProfile;
+    private Button btnLogoutProfile;
 
     ArrayList<LaptopDomain> laptopList;
 
@@ -28,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         tvUsername2 = findViewById(R.id.tvUsername2);
         tvEmail = findViewById(R.id.tvEmail);
         btnEditProfile = findViewById(R.id.btnEditProfile);
+        btnLogoutProfile = findViewById(R.id.btnLogoutProfile);
     }
 
     @Override
@@ -41,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
         tvUsername2.setText(LoginActivity.user.getName());
         tvEmail.setText(LoginActivity.user.getEmail());
 
+        logOut();
         bottomNavigation();
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +52,16 @@ public class ProfileActivity extends AppCompatActivity {
                     Toast.makeText(ProfileActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     profileClicked = false;
                 }
+            }
+        });
+    }
+
+    private void logOut(){
+        btnLogoutProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginActivity.mAuthentication.signOut();
+                startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
             }
         });
     }
