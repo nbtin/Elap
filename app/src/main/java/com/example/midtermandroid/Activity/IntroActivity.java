@@ -5,7 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +27,7 @@ import com.google.firebase.database.Query;
 
 public class IntroActivity extends AppCompatActivity {
     private Button btnGetStarted;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,16 @@ public class IntroActivity extends AppCompatActivity {
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+                ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+                NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+                if (networkInfo != null && networkInfo.isConnected()) {
+                    startActivity(new Intent(IntroActivity.this, LoginActivity.class));
+                } else {
+                    Toast.makeText(IntroActivity.this, "No internet connection!", Toast.LENGTH_SHORT).show();;
+                }
+
             }
         });
     }
