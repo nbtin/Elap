@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +28,7 @@ public class CartActivity extends AppCompatActivity {
     Button btnCheckout;
     ConstraintLayout clBill;
     private ScrollView scrollView;
-    private boolean homeClicked = false, profileClicked = false, cartClicked = true, settingClicked = false;
+    private boolean homeClicked = false, profileClicked = false, cartClicked = true, mapClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +103,7 @@ public class CartActivity extends AppCompatActivity {
         ImageButton homeBtn = findViewById(R.id.btnHome);
         ImageButton profileBtn = findViewById(R.id.btnProfile);
         ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton settingBtn = findViewById(R.id.btnSetting);
+        ImageButton mapBtn = findViewById(R.id.btnShowroom);
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,11 +119,11 @@ public class CartActivity extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!profileClicked){
-//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    profileClicked = true;
-                }
+                startActivity(new Intent(CartActivity.this, ProfileActivity.class));
+//                if (!profileClicked){
+////                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+//                    profileClicked = true;
+//                }
             }
         });
 
@@ -139,13 +138,13 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        settingBtn.setOnClickListener(new View.OnClickListener() {
+        mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!settingClicked){
+                if (!mapClicked){
 //                startActivity(new Intent(MainActivity.this,SettingActivity.class));
                 Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    settingClicked = true;
+                    mapClicked = true;
                 }
             }
         });

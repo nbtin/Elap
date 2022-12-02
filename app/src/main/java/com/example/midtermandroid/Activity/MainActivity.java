@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +19,6 @@ import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Domain.UserDomain;
 import com.example.midtermandroid.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -36,14 +34,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter, adapterBestseller;
     private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
-    private boolean homeClicked = true, profileClicked = false, cartClicked = false, settingClicked = false;
+    private boolean homeClicked = true, profileClicked = false, cartClicked = false, mapClicked = false;
     private TextView tvUsername;
+    private ImageButton btnLogout;
 
     ArrayList<LaptopDomain> laptopList;
 
 
     private void mappingXML() {
         tvUsername = findViewById(R.id.tvUsername);
+        btnLogout = findViewById(R.id.btnLogout);
     }
 
     private void init() {
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton homeBtn = findViewById(R.id.btnHome);
         ImageButton profileBtn = findViewById(R.id.btnProfile);
         ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton settingBtn = findViewById(R.id.btnSetting);
+        ImageButton mapBtn = findViewById(R.id.btnShowroom);
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,11 +136,11 @@ public class MainActivity extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!profileClicked) {
-//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    profileClicked = true;
-                    }
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+//                if (!profileClicked) {
+////                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+//                    profileClicked = true;
+//                    }
             }
         });
 
@@ -155,13 +155,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        settingBtn.setOnClickListener(new View.OnClickListener() {
+        mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!settingClicked) {
+                if (!mapClicked) {
                     Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
 //                startActivity(new Intent(MainActivity.this,SettingActivity.class));
-                    settingClicked = true;
+                    mapClicked = true;
                 }
             }
         });

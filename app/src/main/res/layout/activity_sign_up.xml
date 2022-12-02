@@ -69,6 +69,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Login"
         android:textColor="#ffffff"
         android:textSize="20sp"
@@ -83,7 +84,6 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/signUp_btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
@@ -104,9 +104,25 @@
             android:textStyle="normal" />
 
         <EditText
+            android:id="@+id/signUp_etName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/background_input"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+        <EditText
             android:id="@+id/signUp_etPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/background_input"
             android:ems="10"
             android:hint="Password"
@@ -118,13 +134,14 @@
             android:textStyle="normal" />
 
         <EditText
-            android:id="@+id/signUp_etName"
+            android:id="@+id/signUp_etRetypePassword"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/background_input"
             android:ems="10"
-            android:hint="Name"
-            android:inputType="text"
+            android:hint="Re-type Password"
+            android:inputType="textPassword"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHint="#888888"
@@ -137,20 +154,18 @@
         android:id="@+id/signUp_btnRegister"
         android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginEnd="26dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/btn_background_blue_light"
         android:text="Sign up"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivBackgroundWhite"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/ivBackgroundBlue"
-        app:layout_constraintVertical_bias="0.402"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         tools:ignore="MissingConstraints" />
 
 

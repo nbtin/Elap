@@ -115,18 +115,18 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/btnSetting"
+                    android:id="@+id/btnShowroom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/background_white"
-                    app:srcCompat="@drawable/ic_baseline_settings_24" />
+                    app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Setting"
+                    android:text="Showroom"
                     android:textAlignment="center"
                     android:textColor="#676767"
                     android:textSize="12sp"

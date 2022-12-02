@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Helper.ManagementCart;
 import com.example.midtermandroid.R;
@@ -26,7 +25,7 @@ public class ShowDetailActivity extends AppCompatActivity {
     int numberOrder = 1;
     private ManagementCart managementCart;
     private ImageButton btnBack;
-    private boolean homeClicked = false, profileClicked = false, cartClicked = false, settingClicked = false;
+    private boolean homeClicked = false, profileClicked = false, cartClicked = false, mapClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +109,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         ImageButton homeBtn = findViewById(R.id.btnHome);
         ImageButton profileBtn = findViewById(R.id.btnProfile);
         ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton settingBtn = findViewById(R.id.btnSetting);
+        ImageButton mapBtn = findViewById(R.id.btnShowroom);
 
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,11 +124,11 @@ public class ShowDetailActivity extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!profileClicked) {
-//                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                    Toast.makeText(ShowDetailActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    profileClicked = true;
-                }
+                startActivity(new Intent(ShowDetailActivity.this, ProfileActivity.class));
+//                if (!profileClicked) {
+////                    Toast.makeText(ShowDetailActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+//                    profileClicked = true;
+//                }
             }
         });
 
@@ -144,13 +143,13 @@ public class ShowDetailActivity extends AppCompatActivity {
             }
         });
 
-        settingBtn.setOnClickListener(new View.OnClickListener() {
+        mapBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!settingClicked) {
+                if (!mapClicked) {
                     Toast.makeText(ShowDetailActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
 //                startActivity(new Intent(MainActivity.this,SettingActivity.class));
-                    settingClicked = true;
+                    mapClicked = true;
                 }
             }
         });
