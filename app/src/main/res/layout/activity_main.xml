@@ -217,16 +217,16 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <com.google.android.material.button.MaterialButton
+                    <TextView
                         android:id="@+id/btnViewSale"
                         android:layout_width="wrap_content"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
                         android:backgroundTint="@color/btn_background_blue_light"
-                        android:text="Learn more"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="30dp"
+                        android:text="Until December 31, 2022 "
+                        android:textColor="#EAE2A8"
+                        android:textSize="14sp"
+                        android:textStyle="bold|italic"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
                         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"

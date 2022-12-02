@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.midtermandroid.Domain.LaptopDomain;
+import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.Helper.ManagementCart;
 import com.example.midtermandroid.R;
 import com.squareup.picasso.Picasso;
@@ -25,7 +26,12 @@ public class ShowDetailActivity extends AppCompatActivity {
     int numberOrder = 1;
     private ManagementCart managementCart;
     private ImageButton btnBack;
-    private boolean homeClicked = false, profileClicked = false, cartClicked = false, mapClicked = false;
+    private BottomNavigation bottomNavigation = new BottomNavigation(ShowDetailActivity.this);
+
+    private ImageButton homeBtn;
+    private ImageButton profileBtn;
+    private ImageButton cartBtn;
+    private ImageButton mapBtn ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +42,8 @@ public class ShowDetailActivity extends AppCompatActivity {
 
         initView();
         getBundle();
-        bottomNavigation();
+        bottomNavigation.handleNavigation("detail", homeBtn, profileBtn, cartBtn, mapBtn);
+
 
     }
 
@@ -103,55 +110,11 @@ public class ShowDetailActivity extends AppCompatActivity {
 
         ivPicDetail = findViewById(R.id.ivPicDetail);
 
+        homeBtn = findViewById(R.id.btnHome);
+        profileBtn = findViewById(R.id.btnProfile);
+        cartBtn = findViewById(R.id.btnCart);
+        mapBtn = findViewById(R.id.btnShowroom);
+
     }
 
-    private void bottomNavigation() {
-        ImageButton homeBtn = findViewById(R.id.btnHome);
-        ImageButton profileBtn = findViewById(R.id.btnProfile);
-        ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton mapBtn = findViewById(R.id.btnShowroom);
-
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!homeClicked) {
-                    startActivity(new Intent(ShowDetailActivity.this, MainActivity.class));
-                }
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ShowDetailActivity.this, ProfileActivity.class));
-//                if (!profileClicked) {
-////                    Toast.makeText(ShowDetailActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-//                    profileClicked = true;
-//                }
-            }
-        });
-
-        cartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!cartClicked) {
-                    startActivity(new Intent(ShowDetailActivity.this,CartActivity.class));
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    cartClicked = true;
-                }
-            }
-        });
-
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mapClicked) {
-                    Toast.makeText(ShowDetailActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(MainActivity.this,SettingActivity.class));
-                    mapClicked = true;
-                }
-            }
-        });
-    }
 }

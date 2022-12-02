@@ -6,6 +6,7 @@
     android:layout_height="80dp"
     android:layout_margin="8dp"
     android:background="@drawable/brand_background1"
+    android:backgroundTint="@color/btn_background_white"
     android:elevation="4dp">
 
     <ImageView

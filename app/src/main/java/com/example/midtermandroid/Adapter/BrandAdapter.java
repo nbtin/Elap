@@ -1,10 +1,12 @@
 package com.example.midtermandroid.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -12,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.midtermandroid.Activity.ShowDetailActivity;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.R;
 
@@ -64,6 +67,13 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
         int drawableResourceId = holder.itemView.getContext().getResources().getIdentifier(picUrl, "drawable", holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext()).load(drawableResourceId).into(holder.brandPic);
+
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(holder.itemView.getContext(), R.string.alert, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

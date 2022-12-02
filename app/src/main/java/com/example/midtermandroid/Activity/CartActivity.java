@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.midtermandroid.Adapter.CartAdapter;
+import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.Helper.ManagementCart;
 import com.example.midtermandroid.Interface.ChangeNumber;
 import com.example.midtermandroid.R;
@@ -28,7 +29,13 @@ public class CartActivity extends AppCompatActivity {
     Button btnCheckout;
     ConstraintLayout clBill;
     private ScrollView scrollView;
-    private boolean homeClicked = false, profileClicked = false, cartClicked = true, mapClicked = false;
+    private BottomNavigation bottomNavigation = new BottomNavigation(CartActivity.this);
+
+    private ImageButton homeBtn;
+    private ImageButton profileBtn;
+    private ImageButton cartBtn;
+    private ImageButton mapBtn ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class CartActivity extends AppCompatActivity {
         initView();
         initList();
         CalculateCart();
-        bottomNavigation();
+        bottomNavigation.handleNavigation("cart", homeBtn, profileBtn, cartBtn, mapBtn);
 
         btnCheckout = findViewById(R.id.btnCheckout);
         btnCheckout.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +70,11 @@ public class CartActivity extends AppCompatActivity {
         tvEmpty = findViewById(R.id.tvEmpty);
         scrollView = findViewById(R.id.scrollView4);
         clBill = findViewById(R.id.clBill);
+
+        homeBtn = findViewById(R.id.btnHome);
+        profileBtn = findViewById(R.id.btnProfile);
+        cartBtn = findViewById(R.id.btnCart);
+        mapBtn = findViewById(R.id.btnShowroom);
     }
 
     private void initList(){
@@ -99,54 +111,4 @@ public class CartActivity extends AppCompatActivity {
         tvTotal.setText(String.valueOf(formatter(total)) + " đ");
     }
 
-    private void bottomNavigation() {
-        ImageButton homeBtn = findViewById(R.id.btnHome);
-        ImageButton profileBtn = findViewById(R.id.btnProfile);
-        ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton mapBtn = findViewById(R.id.btnShowroom);
-
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!homeClicked){
-                startActivity(new Intent(CartActivity.this, MainActivity.class));
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    homeClicked = true;
-                }
-            }
-        });
-
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CartActivity.this, ProfileActivity.class));
-//                if (!profileClicked){
-////                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-//                    profileClicked = true;
-//                }
-            }
-        });
-
-        cartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!cartClicked){
-                startActivity(new Intent(CartActivity.this,CartActivity.class));
-//                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    cartClicked = false;
-                }
-            }
-        });
-
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mapClicked){
-//                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(CartActivity.this,MapActivity.class));
-                    mapClicked = true;
-                }
-            }
-        });
-    }
 }

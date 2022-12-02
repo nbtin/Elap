@@ -11,15 +11,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.midtermandroid.Domain.LaptopDomain;
+import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.R;
 
 import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
     private boolean homeClicked = false, profileClicked = true, cartClicked = false, mapClicked = false;
-    private TextView tvUsername1, tvUsername2, tvEmail;
+    private TextView tvUsername1, tvUsername2, tvEmail, tvPassword;
     private Button btnEditProfile;
     private Button btnLogoutProfile;
+    private BottomNavigation bottomNavigation = new BottomNavigation(ProfileActivity.this);
+
+    private ImageButton homeBtn;
+    private ImageButton profileBtn;
+    private ImageButton cartBtn;
+    private ImageButton mapBtn ;
+
 
     ArrayList<LaptopDomain> laptopList;
 
@@ -30,6 +38,12 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tvEmail);
         btnEditProfile = findViewById(R.id.btnEditProfile);
         btnLogoutProfile = findViewById(R.id.btnLogoutProfile);
+        tvPassword = findViewById(R.id.tvPassword);
+
+        homeBtn = findViewById(R.id.btnHome);
+        profileBtn = findViewById(R.id.btnProfile);
+        cartBtn = findViewById(R.id.btnCart);
+        mapBtn = findViewById(R.id.btnShowroom);
     }
 
     @Override
@@ -44,7 +58,10 @@ public class ProfileActivity extends AppCompatActivity {
         tvEmail.setText(LoginActivity.user.getEmail());
 
         logOut();
-        bottomNavigation();
+        bottomNavigation.handleNavigation("profile", homeBtn, profileBtn, cartBtn, mapBtn);
+
+
+
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +69,12 @@ public class ProfileActivity extends AppCompatActivity {
                     Toast.makeText(ProfileActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
                     profileClicked = false;
                 }
+            }
+        });
+        tvPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Toast.makeText(ProfileActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -62,58 +85,9 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 LoginActivity.mAuthentication.signOut();
                 startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+                Toast.makeText(ProfileActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void bottomNavigation() {
-        ImageButton homeBtn = findViewById(R.id.btnHome);
-        ImageButton profileBtn = findViewById(R.id.btnProfile);
-        ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton mapBtn = findViewById(R.id.btnShowroom);
-
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    startActivity(new Intent(ProfileActivity.this, MainActivity.class));
-                if (!homeClicked) {
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    homeClicked = true;
-                }
-            }
-        });
-
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (!profileClicked) {
-////                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-//                    Toast.makeText(ProfileActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-//                    profileClicked = true;
-//                }
-            }
-        });
-
-        cartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this,CartActivity.class));
-                if (!cartClicked) {
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    cartClicked = true;
-                }
-            }
-        });
-
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mapClicked) {
-//                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ProfileActivity.this,MapActivity.class));
-                    mapClicked = true;
-                }
-            }
-        });
-    }
 }

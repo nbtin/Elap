@@ -94,6 +94,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,25 +145,28 @@
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/tvForgotPass">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivFb"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/btn_background_white"
+            android:clickable="true"
             android:elevation="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintBottom_toBottomOf="@+id/ivGmail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/ivGmail"
             app:srcCompat="@drawable/facebook" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/ivGmail"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -177,7 +181,7 @@
             app:srcCompat="@drawable/google" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/ivApple"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
@@ -195,7 +199,7 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginStart="26dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="26dp"
         android:backgroundTint="@color/btn_background_blue_light"
         android:text="Login"
@@ -213,6 +217,7 @@
         android:layout_height="58dp"
 
         android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="26dp"
         android:backgroundTint="@color/btn_background_blue_extra_light"
         android:text="Don't have an account? Register one!"

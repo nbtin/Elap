@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.midtermandroid.Domain.UserDomain;
@@ -31,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
     Button btnLogin, btnRegister;
+    TextView tvForgotPass;
+    ImageView ivFb, ivGmail, ivApple;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +44,50 @@ public class LoginActivity extends AppCompatActivity {
         mAuthentication = FirebaseAuth.getInstance();
         mappingXML();
 
+        handleSomeIgnoreBtn();
+
         logIn();
         register();
     }
+
+    private void handleSomeIgnoreBtn() {
+        tvForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+            }
+        });
+        ivFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+            }
+        });
+        ivGmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+            }
+        });
+        ivApple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void mappingXML() {
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
+        tvForgotPass = findViewById(R.id.tvForgotPass);
+        ivFb = findViewById(R.id.ivFb);
+        ivGmail = findViewById(R.id.ivGmail);
+        ivApple = findViewById(R.id.ivApple);
+
     }
 
     private void register() {
@@ -72,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = etUsername.getText().toString();
+                String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString();
 
                 if (username.isEmpty() || password.isEmpty()) {

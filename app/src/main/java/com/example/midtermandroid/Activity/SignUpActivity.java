@@ -48,9 +48,9 @@ public class SignUpActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = etUsername.getText().toString();
+                String email = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString();
-                String name = etName.getText().toString();
+                String name = etName.getText().toString().trim();
                 String retypePassword = etRetypePassword.getText().toString();
 
                 if (email.isEmpty() || password.isEmpty() || name.isEmpty() || retypePassword.isEmpty()) {

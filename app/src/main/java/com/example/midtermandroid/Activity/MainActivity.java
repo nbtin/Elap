@@ -3,6 +3,7 @@ package com.example.midtermandroid.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,7 @@ import com.example.midtermandroid.Adapter.BrandAdapter;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Domain.UserDomain;
+import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,9 +36,16 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter, adapterBestseller;
     private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
-    private boolean homeClicked = true, profileClicked = false, cartClicked = false, mapClicked = false;
     private TextView tvUsername;
     private ImageButton btnLogout;
+    private BottomNavigation bottomNavigation = new BottomNavigation(MainActivity.this);
+
+    private ImageButton homeBtn;
+    private ImageButton profileBtn;
+    private ImageButton cartBtn;
+    private ImageButton mapBtn ;
+
+    private ConstraintLayout clBrand;
 
     ArrayList<LaptopDomain> laptopList;
 
@@ -44,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
     private void mappingXML() {
         tvUsername = findViewById(R.id.tvUsername);
         btnLogout = findViewById(R.id.btnLogout);
+
+        homeBtn = findViewById(R.id.btnHome);
+        profileBtn = findViewById(R.id.btnProfile);
+        cartBtn = findViewById(R.id.btnCart);
+        mapBtn = findViewById(R.id.btnShowroom);
+
+        clBrand = findViewById(R.id.clMainLayout);
     }
 
     private void init() {
@@ -112,11 +128,12 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
+        bottomNavigation.handleNavigation("home", homeBtn, profileBtn, cartBtn, mapBtn);
         logOut();
         recyclerViewBrandList();
         recycleViewBestseller();
-        bottomNavigation();
     }
+
 
     private void logOut(){
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -124,56 +141,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 LoginActivity.mAuthentication.signOut();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
-    }
-
-    private void bottomNavigation() {
-        ImageButton homeBtn = findViewById(R.id.btnHome);
-        ImageButton profileBtn = findViewById(R.id.btnProfile);
-        ImageButton cartBtn = findViewById(R.id.btnCart);
-        ImageButton mapBtn = findViewById(R.id.btnShowroom);
-
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!homeClicked) {
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-                }
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-//                if (!profileClicked) {
-////                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-//                    profileClicked = true;
-//                    }
-            }
-        });
-
-        cartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    startActivity(new Intent(MainActivity.this,CartActivity.class));
-                if (!cartClicked) {
-//                Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                    cartClicked = true;
-                }
-            }
-        });
-
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mapClicked) {
-//                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this,MapActivity.class));
-                    mapClicked = true;
-                }
+                Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }

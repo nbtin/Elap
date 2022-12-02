@@ -1,6 +1,7 @@
 package com.example.midtermandroid.Activity;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.midtermandroid.Domain.ShowroomDomain;
+import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,20 +24,42 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ArrayList<MarkerOptions> markerOptions;
 
+    private BottomNavigation bottomNavigation = new BottomNavigation(MapActivity.this);
+
+    private ImageButton homeBtn;
+    private ImageButton profileBtn;
+    private ImageButton cartBtn;
+    private ImageButton mapBtn ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        initView();
+        bottomNavigation.handleNavigation("showroom", homeBtn, profileBtn, cartBtn, mapBtn);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+//        bottomNavigation.handleNavigation("showroom", MapActivity.this);
+    }
+
+    private void initView() {
+        homeBtn = findViewById(R.id.btnHome);
+        profileBtn = findViewById(R.id.btnProfile);
+        cartBtn = findViewById(R.id.btnCart);
+        mapBtn = findViewById(R.id.btnShowroom);
     }
 
     @Override
