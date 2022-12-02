@@ -77,17 +77,19 @@ public class CartActivity extends AppCompatActivity {
         });
 
         recyclerViewList.setAdapter(adapter);
+    }
+
+    private void CalculateCart(){
         if (managementCart.getListCart().size() == 0){
             scrollView.setVisibility(View.GONE);
             tvEmpty.setVisibility(View.VISIBLE);
+            return;
         }
         else {
             tvEmpty.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
         }
-    }
 
-    private void CalculateCart(){
         int delivery = 0;
 
         int itemTotal = managementCart.getTotalFee();
