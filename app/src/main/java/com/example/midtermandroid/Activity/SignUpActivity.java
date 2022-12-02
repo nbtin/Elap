@@ -59,6 +59,9 @@ public class SignUpActivity extends AppCompatActivity {
                 else if (!password.equals(retypePassword)){
                     Toast.makeText(SignUpActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
                 }
+                else if (password.length() < 6){
+                    Toast.makeText(SignUpActivity.this, "Passwords must be at least 6 characters!", Toast.LENGTH_SHORT).show();
+                }
                 else {
                     mAuthentication.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
@@ -77,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                        Toast.makeText(SignUpActivity.this, "Cannot create user with given email!",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 }
