@@ -142,8 +142,8 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!mapClicked){
-//                startActivity(new Intent(MainActivity.this,SettingActivity.class));
-                Toast.makeText(CartActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(CartActivity.this,MapActivity.class));
                     mapClicked = true;
                 }
             }

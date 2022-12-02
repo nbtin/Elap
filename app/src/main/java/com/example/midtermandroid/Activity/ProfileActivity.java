@@ -96,8 +96,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!mapClicked) {
-                    Toast.makeText(ProfileActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+//                    Toast.makeText(MainActivity.this, R.string.alert, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ProfileActivity.this,MapActivity.class));
                     mapClicked = true;
                 }
             }

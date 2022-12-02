@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MapActivity">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/map"
-        tools:context=".MapsActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

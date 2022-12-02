@@ -1,9 +1,13 @@
 package com.example.midtermandroid.Activity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.midtermandroid.Domain.ShowroomDomain;
 import com.example.midtermandroid.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -11,10 +15,18 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private ArrayList<MarkerOptions> markerOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +42,102 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        loadShowroomData();
+    }
+
+    private void loadShowroomData() {
+        if (markerOptions == null) {
+            markerOptions = new ArrayList<>();
+        }
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://elap-7b6f1-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference showroomRef = database.getReference("showrooms");
+
+        showroomRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                markerOptions.clear();
+                int i = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    ShowroomDomain showroomDomain = (ShowroomDomain) snapshot.getValue(ShowroomDomain.class);
+                    markerOptions.add(showroomDomain.toMarkerOptions());
+                    mMap.addMarker((markerOptions.get(i)));
+                    i++;
+                }
+
+                if (markerOptions.size() > 0){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(markerOptions.get(0).getPosition()));
+                } else{
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-34, 151)));
+                }
+
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(13.0f));
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                markerOptions.clear();
+                int i = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    ShowroomDomain showroomDomain = (ShowroomDomain) snapshot.getValue(ShowroomDomain.class);
+                    markerOptions.add(showroomDomain.toMarkerOptions());
+                    mMap.addMarker((markerOptions.get(i)));
+                    i++;
+                }
+
+                if (markerOptions.size() > 0){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(markerOptions.get(0).getPosition()));
+                } else{
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-34, 151)));
+                }
+
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(13.0f));
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                markerOptions.clear();
+                int i = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    ShowroomDomain showroomDomain = (ShowroomDomain) snapshot.getValue(ShowroomDomain.class);
+                    markerOptions.add(showroomDomain.toMarkerOptions());
+                    mMap.addMarker((markerOptions.get(i)));
+                    i++;
+                }
+
+                if (markerOptions.size() > 0){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(markerOptions.get(0).getPosition()));
+                } else{
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-34, 151)));
+                }
+
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(13.0f));
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                markerOptions.clear();
+                int i = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    ShowroomDomain showroomDomain = (ShowroomDomain) snapshot.getValue(ShowroomDomain.class);
+                    markerOptions.add(showroomDomain.toMarkerOptions());
+                    mMap.addMarker((markerOptions.get(i)));
+                    i++;
+                }
+
+                if (markerOptions.size() > 0){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(markerOptions.get(0).getPosition()));
+                } else{
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(-34, 151)));
+                }
+
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(13.0f));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MapActivity.this, "Actions has been cancelled!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
