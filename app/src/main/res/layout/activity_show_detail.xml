@@ -9,12 +9,14 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="54dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="60dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/background_white"
+        android:background="@drawable/bestseller_background"
+        android:backgroundTint="@color/btn_background_white"
         android:clickable="true"
+        android:elevation="4dp"
         android:translationZ="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

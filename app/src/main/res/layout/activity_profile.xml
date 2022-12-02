@@ -7,7 +7,56 @@
     android:background="#F5F5F5"
     tools:context=".Activity.ProfileActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Developed by "
+            android:textColor="#636363"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="644dp" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Nguyen Bao Tin"
+            android:textColor="#0048FF"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            tools:layout_editor_absoluteY="644dp" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Pham Huu Phuc."
+            android:textColor="#0048FF"
+            app:layout_constraintStart_toEndOf="@+id/textView24"
+            tools:layout_editor_absoluteY="644dp" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" and "
+            android:textColor="#636363"
+            app:layout_constraintStart_toEndOf="@+id/textView22"
+            tools:layout_editor_absoluteY="644dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ScrollView
+        android:id="@+id/scrollView5"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -238,4 +287,5 @@
         android:id="@+id/layoutInclude"
         layout="@layout/bottom_navigation"
         app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
