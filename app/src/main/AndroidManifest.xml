@@ -14,9 +14,20 @@
         android:theme="@style/Theme.MidTermAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.SignUpActivity"
+            android:name=".MapActivity"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+        <activity
+            android:name=".Activity.SignUpActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.CartActivity"
             android:exported="false" />
