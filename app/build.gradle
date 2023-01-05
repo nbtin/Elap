@@ -60,4 +60,7 @@ dependencies {
 
     // Add dependency to download image from uri
     implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // Recycle view
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
 }

@@ -26,7 +26,10 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                >
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView2"
@@ -103,7 +106,7 @@
                     app:layout_constraintTop_toTopOf="@+id/usernameInMain"
                     app:srcCompat="@drawable/logo" />
 
-                <EditText
+                <SearchView
                     android:id="@+id/etSearch"
                     android:layout_width="347dp"
                     android:layout_height="44dp"
@@ -111,6 +114,7 @@
                     android:background="@drawable/background_input"
                     android:drawableStart="@android:drawable/ic_menu_search"
                     android:drawablePadding="8dp"
+                    android:focusable="false"
                     android:ems="10"
                     android:hint="Find Laptop"
                     android:inputType="textPersonName"
@@ -118,7 +122,21 @@
                     android:textColorHint="#2F2F2F"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvUsername"
+                    android:iconifiedByDefault="false">
+
+                </SearchView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/etSearch"
+                    android:padding="10dp"
+                    android:translationZ="100dp"
+                    android:visibility="invisible"
+                    />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
@@ -257,6 +275,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
@@ -264,5 +284,6 @@
     <include
         android:id="@+id/layoutInclude"
         layout="@layout/bottom_navigation"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
