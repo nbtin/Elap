@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.midtermandroid.Activity.MainActivity;
 import com.example.midtermandroid.Activity.ShowDetailActivity;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.R;
@@ -71,7 +72,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.itemView.getContext(), R.string.alert, Toast.LENGTH_SHORT).show();
+                MainActivity.updateLaptopWithBrandList(holder.brandName.getText().toString());
             }
         });
     }

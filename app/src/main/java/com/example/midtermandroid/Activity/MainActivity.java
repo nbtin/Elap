@@ -44,9 +44,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView.Adapter adapter, adapterBestseller;
-    private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewSearch;
-    private SearchAdapter searchAdapter;
+    private static RecyclerView.Adapter adapter, adapterBestseller;
+    private static RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewSearch;
+    private static SearchAdapter searchAdapter;
     SearchView editSearch;
     private TextView tvUsername;
     private ImageButton btnLogout;
@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout clBrand;
 
     ArrayList<LaptopDomain> laptopList;
+    ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
+    private static String currentBrand;
+    private static ArrayList<LaptopDomain> laptopWithBrandList;
+    private static ArrayList<LaptopDomain> laptopList;
     ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
 
     private void mappingXML() {
@@ -131,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Action has been cancelled!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        currentBrand = "All";
+        loadLaptopData();
     }
 
     @Override
@@ -255,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         brand.add(new BrandDomain("Asus", "brand_3"));
         brand.add(new BrandDomain("Acer", "brand_4"));
         brand.add(new BrandDomain("Lenovo", "brand_5"));
-
+        // TODO: add a new brand name "All"
         adapter = new BrandAdapter(brand);
         recyclerViewBrandList.setAdapter(adapter);
     }
@@ -264,23 +271,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
         recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
 
-
-//        laptopList.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
-//        laptopList.add(new LaptopDomain("Asus TUF Gaming FX506LHB-HN188W", "lap_2", "Intel core i5 10300H/8GB/512GB/15.6\"FHD/GTX 1650 4GB/Win 11", 17490000));
-//        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "Intel core i5 11400H/8GB/512GB/15.6\"FHD/GeForce RTX 3050 4GB/Win 10", 22490000));
-//        laptopList.add(new LaptopDomain("Laptop MSI Modern 15 A5M 235VN", "lap_4", "AMD Ryzen 7 5700U/8GB/512GB/15.6\"FHD/./Win 11", 15890000));
-//        laptopList.add(new LaptopDomain("Laptop Dell Vostro V5410", "lap_5", "Intel core i5 11320H/8GB/512GB/14.0\"FHD/./Win 11", 20490000));
-//        laptopList.add(new LaptopDomain("Lenovo Yoga Slim 7 Pro 14IHU5O", "lap_6", "Intel core i5 11300H/16GB/512GB/14\"2.8K OLED/./Win 11", 20990000));
-
-        laptopList = new ArrayList<>();
-        adapterBestseller = new BestsellerAdapter(laptopList);
+        // TODO: add adapter of laptop with brand list
+        adapterBestseller = new BestsellerAdapter(laptopWithBrandList);
         recyclerViewBestsellerList.setAdapter((adapterBestseller));
-
-        loadLaptopData();
     }
 
     private void loadLaptopData(){
+        if (laptopList == null) {
+            laptopList = new ArrayList<>();
+        }
 
+        if (laptopWithBrandList == null) {
+            laptopWithBrandList = new ArrayList<>();
+        }
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://elap-7b6f1-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -290,8 +293,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
-                laptopList.add(new LaptopDomain(laptopDomain));
-                adapterBestseller.notifyDataSetChanged();
+                laptopList.add(laptopDomain);
+
+                if (currentBrand.equals("All") || laptopDomain.getBrandName().equals(currentBrand)) {
+                    laptopWithBrandList.add(laptopDomain);
+                    // TODO: change to adapter of the laptop with brand list
+                    adapterBestseller.notifyDataSetChanged();
+                }
+
+                // TODO: uncomment
+                //adapterBestseller.notifyDataSetChanged();
+
             }
 
             @Override
@@ -315,4 +327,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static void updateLaptopWithBrandList(String brandName) {
+        if (currentBrand.equals(brandName)) {
+            return;
+        } else {
+            currentBrand = brandName;
+            laptopWithBrandList.clear();
+        }
+
+        for (LaptopDomain laptopDomain: laptopList) {
+            if (currentBrand.equals("All") || laptopDomain.getBrandName().equals(currentBrand)){
+                laptopWithBrandList.add(laptopDomain);
+            }
+        }
+        // TODO: convert to adapter of laptop with brand list
+        adapterBestseller.notifyDataSetChanged();
+    }
+
 }
