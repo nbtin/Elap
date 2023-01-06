@@ -149,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
         editSearch.clearFocus();
+        super.onResume();
     }
 
     private void recycleViewSearch() {
@@ -170,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFocusChange(View view, boolean b) {
                 if(b){
                     Handler handler = new Handler();
-                    Log.d("Check", "Đang focus và thay đỏi text");
                     editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                         @Override
                         public boolean onQueryTextSubmit(String s) {
@@ -179,12 +178,10 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public boolean onQueryTextChange(String s) {
-                            Log.d("Check string change", s);
                             handler.removeCallbacksAndMessages(null);
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Log.d("Không thay đổi gì sau 2 giây", "Show kết quả");
                                     recyclerViewSearch.setVisibility(View.VISIBLE);
                                 }
 
@@ -195,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
                 else{
-                    Log.d("Check", "Không focus");
+                    recyclerViewSearch.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -203,6 +200,16 @@ public class MainActivity extends AppCompatActivity {
 
     private List<LaptopDomain> getListSearch() {
         List<LaptopDomain> list = new ArrayList<>();
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
         list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
         return list;
     }
