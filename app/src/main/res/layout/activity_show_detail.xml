@@ -479,8 +479,8 @@
                     android:layout_marginBottom="8dp"
                     android:text="Sold out!"
                     android:textColor="#E41616"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                    android:textStyle="bold|italic" />
             </LinearLayout>
 
             <TextView
