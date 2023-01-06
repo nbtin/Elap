@@ -24,6 +24,10 @@ import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.Helper.ManagementCart;
 import com.example.midtermandroid.R;
+import com.facebook.share.model.ShareHashtag;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +38,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Vector;
+
+
+import android.app.Application;
+import android.content.pm.PackageManager;
+import android.util.Base64;
+import android.util.Log;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class ShowDetailActivity extends AppCompatActivity {
     private Button btnAddToCart;
@@ -51,6 +63,10 @@ public class ShowDetailActivity extends AppCompatActivity {
     private ImageButton cartBtn;
     private ImageButton mapBtn;
     private Button btnMap1, btnMap2, btnMap3, btnMap4, btnMap5;
+    private ImageButton btnShare;
+
+    private String Pic_link;
+    private String Lap_name;
 
     private RecyclerView.Adapter adapter, adapterCompare;
     private RecyclerView recyclerViewCompareList;
@@ -102,7 +118,7 @@ public class ShowDetailActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
                 if(laptopDomain.getTitle().compareTo(object.getTitle()) != 0 && Math.abs(laptopDomain.getFee() - object.getFee()) <= 500000){
-                    laptopList.add(new LaptopDomain(laptopDomain));
+                    laptopList.add(laptopDomain);
                 }
                 adapterCompare.notifyDataSetChanged();
             }
@@ -125,6 +141,7 @@ public class ShowDetailActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
         btnMapHandler();
+        btnShareHandler();
 
             }
         });
@@ -141,6 +158,10 @@ public class ShowDetailActivity extends AppCompatActivity {
         int drawableResourceId = this.getResources().getIdentifier(object.getPic(), "drawable", this.getPackageName());
 //        Glide.with(this).load(drawableResourceId).into(ivPicDetail);
         Picasso.with(this).load(object.getPic()).into(ivPicDetail);
+
+        // assign object.pic for Pic_link
+        this.Pic_link = object.getPic();
+        this.Lap_name = object.getTitle();
 
         tvTitleDetail.setText(object.getTitle());
         tvFeeDetail.setText(String.valueOf(formatter(object.getFee())));
@@ -267,6 +288,8 @@ public class ShowDetailActivity extends AppCompatActivity {
         btnMap4 = findViewById(R.id.btnMap4);
         btnMap5 = findViewById(R.id.btnMap5);
 
+        btnShare = findViewById(R.id.btnShare);
+
     }
 
 
@@ -308,5 +331,25 @@ public class ShowDetailActivity extends AppCompatActivity {
         });
 
     }
+
+    private void btnShareHandler(){
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ShareLinkContent content = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse(Pic_link))
+                        .setShareHashtag(new ShareHashtag.Builder()
+                                .setHashtag("#" + Lap_name.replaceAll("\\s+", "") + "_atElap")
+                                .build())
+                        .build();
+
+//                ShareDialog shareDialog = new ShareDialog(ShowDetailActivity.this);
+//                shareDialog.show(content, ShareDialog.Mode.WEB);
+                ShareDialog.show(ShowDetailActivity.this, content);
+            }
+        });
+    }
+
 
 }

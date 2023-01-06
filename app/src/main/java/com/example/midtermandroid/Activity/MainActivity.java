@@ -44,10 +44,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private static RecyclerView.Adapter adapter, adapterBestseller;
-    private static RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewSearch;
+    private static RecyclerView.Adapter adapter, adapterBestseller, adapterBrandLaptop;
+    private static RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewBrandLaptopList, recyclerViewSearch;
     private static SearchAdapter searchAdapter;
     SearchView editSearch;
+    private static TextView tvBrandLaptopList;
     private TextView tvUsername;
     private ImageButton btnLogout;
     private BottomNavigation bottomNavigation = new BottomNavigation(MainActivity.this);
@@ -59,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout clBrand;
 
-    ArrayList<LaptopDomain> laptopList;
-    ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
     private static String currentBrand;
     private static ArrayList<LaptopDomain> laptopWithBrandList;
     private static ArrayList<LaptopDomain> laptopList;
     ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
 
     private void mappingXML() {
+        tvBrandLaptopList = findViewById(R.id.tvBrandLap);
+
         tvUsername = findViewById(R.id.tvUsername);
         btnLogout = findViewById(R.id.btnLogout);
 
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+
         FirebaseUser firebaseUser = LoginActivity.mAuthentication.getCurrentUser();
 
         DatabaseReference databaseRef = FirebaseDatabase
@@ -136,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        currentBrand = "All";
         loadLaptopData();
     }
 
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         logOut();
         recyclerViewBrandList();
         recycleViewBestseller();
+        recycleViewBrandLaptopList();
         recycleViewSearch();
     }
 
@@ -271,9 +273,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
         recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
 
-        // TODO: add adapter of laptop with brand list
-        adapterBestseller = new BestsellerAdapter(laptopWithBrandList);
+        adapterBestseller = new BestsellerAdapter(laptopList);
+
         recyclerViewBestsellerList.setAdapter((adapterBestseller));
+    }
+
+    private void recycleViewBrandLaptopList() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewBrandLaptopList = findViewById(R.id.rvBrandLap);
+        recyclerViewBrandLaptopList.setLayoutManager(linearLayoutManager);
+
+        adapterBrandLaptop = new BestsellerAdapter(laptopWithBrandList);
+
+        recyclerViewBrandLaptopList.setAdapter(adapterBrandLaptop);
     }
 
     private void loadLaptopData(){
@@ -295,14 +307,12 @@ public class MainActivity extends AppCompatActivity {
                 LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
                 laptopList.add(laptopDomain);
 
-                if (currentBrand.equals("All") || laptopDomain.getBrandName().equals(currentBrand)) {
+                if (currentBrand != null && laptopDomain.getBrandName().equals(currentBrand)) {
                     laptopWithBrandList.add(laptopDomain);
-                    // TODO: change to adapter of the laptop with brand list
-                    adapterBestseller.notifyDataSetChanged();
+                    adapterBrandLaptop.notifyDataSetChanged();
                 }
 
-                // TODO: uncomment
-                //adapterBestseller.notifyDataSetChanged();
+                adapterBestseller.notifyDataSetChanged();
 
             }
 
@@ -329,7 +339,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void updateLaptopWithBrandList(String brandName) {
-        if (currentBrand.equals(brandName)) {
+        if (currentBrand == null) {
+            tvBrandLaptopList.setVisibility(View.VISIBLE);
+            recyclerViewBrandLaptopList.setVisibility(View.VISIBLE);
+            currentBrand = brandName;
+        } else if (currentBrand.equals(brandName)) {
             return;
         } else {
             currentBrand = brandName;
@@ -337,12 +351,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         for (LaptopDomain laptopDomain: laptopList) {
-            if (currentBrand.equals("All") || laptopDomain.getBrandName().equals(currentBrand)){
+            if (laptopDomain.getBrandName().equals(currentBrand)){
                 laptopWithBrandList.add(laptopDomain);
             }
         }
-        // TODO: convert to adapter of laptop with brand list
-        adapterBestseller.notifyDataSetChanged();
+
+        adapterBrandLaptop.notifyDataSetChanged();
     }
 
 }

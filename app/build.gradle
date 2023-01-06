@@ -61,6 +61,9 @@ dependencies {
     // Add dependency to download image from uri
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-share:latest.release'
+
     // Recycle view
     implementation "androidx.recyclerview:recyclerview:1.2.1"
 }
