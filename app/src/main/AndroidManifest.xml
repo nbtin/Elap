@@ -43,6 +43,9 @@
             android:name=".Activity.ShowDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.ShowCompareActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ProfileActivity"
             android:exported="false" />
         <activity
