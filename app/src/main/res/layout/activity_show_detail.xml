@@ -22,6 +22,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
+    <ImageButton
+        android:id="@+id/btnShare"
+        android:layout_width="60dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bestseller_background"
+        android:backgroundTint="@color/btn_background_white"
+        android:elevation="4dp"
+        android:translationZ="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_share_24" />
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"

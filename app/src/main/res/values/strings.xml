@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Elap</string>
     <string name="alert">Feature in development</string>
+    <string name="facebook_app_id">2106055362899814</string>
+    <string name="facebook_client_token">54f566b095e817a93cd5e0d51ead1b50</string>
 </resources>
