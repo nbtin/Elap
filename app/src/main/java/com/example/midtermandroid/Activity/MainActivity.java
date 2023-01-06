@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,7 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter, adapterBestseller;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout clBrand;
 
     ArrayList<LaptopDomain> laptopList;
-
+    ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
 
     private void mappingXML() {
         tvUsername = findViewById(R.id.tvUsername);
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewSearch.setLayoutManager(linearLayoutManager);
 
-        searchAdapter = new SearchAdapter(getListSearch());
+        searchAdapter = new SearchAdapter(laptopSearch);
         recyclerViewSearch.setAdapter(searchAdapter);
 
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -169,6 +171,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if(b){
+                    if(laptopSearch.size() > 0){
+                        recyclerViewSearch.setVisibility(View.VISIBLE);
+                    }
                     Handler handler = new Handler();
                     editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                         @Override
@@ -182,10 +187,23 @@ public class MainActivity extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    recyclerViewSearch.setVisibility(View.VISIBLE);
+                                    laptopSearch.clear();
+                                    if(s.trim().length() > 0){
+                                        for(LaptopDomain laptop : laptopList){
+                                            if(laptop.getTitle().toLowerCase().contains(s.toLowerCase())){
+                                                laptopSearch.add(laptop);
+                                            }
+                                        }
+                                    }
+                                    if(laptopSearch.size() > 0){
+                                        recyclerViewSearch.setVisibility(View.VISIBLE);
+                                    }
+                                    else{
+                                        recyclerViewSearch.setVisibility(View.INVISIBLE);
+                                    }
+                                    searchAdapter.notifyDataSetChanged();
                                 }
-
-                            }, 2000);
+                            }, 1000);
 
                             return false;
                         }

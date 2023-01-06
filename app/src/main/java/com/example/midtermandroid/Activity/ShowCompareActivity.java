@@ -131,8 +131,8 @@ public class ShowCompareActivity extends AppCompatActivity {
         // Laptop 2
         Picasso.with(this).load(object2.getPic()).into(ivPic2);
 
-        tvTitle1.setText(object2.getTitle());
-        tvFee1.setText(String.valueOf(formatter(object2.getFee())));
+        tvTitle2.setText(object2.getTitle());
+        tvFee2.setText(String.valueOf(formatter(object2.getFee())));
 
         String [] token_detail_2 = object2.getDescription().split("/", -1);
 
@@ -168,7 +168,7 @@ public class ShowCompareActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
 
         ivPic1 = findViewById(R.id.pic_laptop_1);
-        tvTitle1 = findViewById(R.id.title_cpu_1);
+        tvTitle1 = findViewById(R.id.title_laptop_1);
         tvFee1 = findViewById(R.id.fee_laptop_1);
         tvCPU1 = findViewById(R.id.cpu_1);
         tvRAM1 = findViewById(R.id.ram_1);
@@ -178,7 +178,7 @@ public class ShowCompareActivity extends AppCompatActivity {
         tvOS1 = findViewById(R.id.os_1);
 
         ivPic2 = findViewById(R.id.pic_laptop_2);
-        tvTitle2 = findViewById(R.id.title_cpu_2);
+        tvTitle2 = findViewById(R.id.title_laptop_2);
         tvFee2 = findViewById(R.id.fee_laptop_2);
         tvCPU2 = findViewById(R.id.cpu_2);
         tvRAM2 = findViewById(R.id.ram_2);

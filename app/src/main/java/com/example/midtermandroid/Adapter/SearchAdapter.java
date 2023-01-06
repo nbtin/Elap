@@ -3,8 +3,10 @@ package com.example.midtermandroid.Adapter;
 import com.example.midtermandroid.Activity.ShowDetailActivity;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.R;
+import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class SearchAdapter extends  RecyclerView.Adapter<SearchAdapter.SearchViewHolder> implements Filterable {
+public class SearchAdapter extends  RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
     private List<LaptopDomain> mListLaptops;
 
@@ -35,6 +37,11 @@ public class SearchAdapter extends  RecyclerView.Adapter<SearchAdapter.SearchVie
         return new SearchViewHolder(view);
     }
 
+    public static String formatter(int value) {
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
         LaptopDomain laptop = mListLaptops.get(position);
@@ -42,16 +49,15 @@ public class SearchAdapter extends  RecyclerView.Adapter<SearchAdapter.SearchVie
             return;
         }
 
-        holder.imgLaptop.setImageResource(R.drawable.lap_1);
-        holder.tvName.setText("Sản phẩm");
-        holder.tvPrice.setText("Giá sản phẩm");
+        Picasso.with(holder.itemView.getContext()).load(mListLaptops.get(position).getPic()).into(holder.imgLaptop);
+        holder.tvName.setText(mListLaptops.get(position).getTitle());
+        holder.tvPrice.setText(String.valueOf(mListLaptops.get(position).getFee()));
         holder.searchLaptop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                 Chuyển đến trang chi tiết của sản phẩm
-//                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailActivity.class);
-//                intent.putExtra("object", "com.example.midtermandroid.Domain.LaptopDomain@a2c80bc");
-//                holder.itemView.getContext().startActivity(intent);
+                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailActivity.class);
+                intent.putExtra("object", mListLaptops.get(position));
+                holder.itemView.getContext().startActivity(intent);
             }
         });
     }
@@ -77,21 +83,5 @@ public class SearchAdapter extends  RecyclerView.Adapter<SearchAdapter.SearchVie
             tvPrice = itemView.findViewById(R.id.price_laptop);
             searchLaptop = itemView.findViewById(R.id.item_search);
         }
-    }
-
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String strSearch = charSequence.toString();
-                return null;
-            }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-
-            }
-        };
     }
 }

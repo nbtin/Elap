@@ -48,8 +48,8 @@ public class ShowDetailActivity extends AppCompatActivity {
     private ImageButton cartBtn;
     private ImageButton mapBtn ;
 
-    private RecyclerView.Adapter adapter, adapterBestseller;
-    private RecyclerView recyclerViewBestsellerList;
+    private RecyclerView.Adapter adapter, adapterCompare;
+    private RecyclerView recyclerViewCompareList;
     ArrayList<LaptopDomain> laptopList;
 
     @Override
@@ -67,11 +67,11 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     private void recycleViewCompare() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewBestsellerList = findViewById(R.id.rcv_compare);
-        recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
+        recyclerViewCompareList = findViewById(R.id.rcv_compare);
+        recyclerViewCompareList.setLayoutManager(linearLayoutManager);
 
         laptopList = new ArrayList<>();
-        adapterBestseller = new CompareAdapter(laptopList, new CompareAdapter.IClickListener(){
+        adapterCompare = new CompareAdapter(laptopList, new CompareAdapter.IClickListener(){
             @Override
             public void onClickCompare(LaptopDomain laptop) {
                 Intent intent = new Intent(ShowDetailActivity.this, ShowCompareActivity.class);
@@ -81,7 +81,7 @@ public class ShowDetailActivity extends AppCompatActivity {
             }
 
         });
-        recyclerViewBestsellerList.setAdapter((adapterBestseller));
+        recyclerViewCompareList.setAdapter((adapterCompare));
 
         loadLaptopData();
     }
@@ -97,8 +97,10 @@ public class ShowDetailActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
-                laptopList.add(new LaptopDomain(laptopDomain));
-                adapterBestseller.notifyDataSetChanged();
+                if(laptopDomain.getTitle().compareTo(object.getTitle()) != 0 && Math.abs(laptopDomain.getFee() - object.getFee()) <= 500000){
+                    laptopList.add(new LaptopDomain(laptopDomain));
+                }
+                adapterCompare.notifyDataSetChanged();
             }
 
             @Override

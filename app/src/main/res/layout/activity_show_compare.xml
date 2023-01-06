@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="10"
-            android:paddingTop="30dp">
+            android:paddingTop="50dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 <ImageView
                     android:id="@+id/pic_laptop_1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     app:srcCompat="@drawable/lap_1" />
                 <TextView
                     android:id="@+id/title_laptop_1"
@@ -54,6 +54,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:text="Title"
+                    android:layout_gravity="fill_vertical"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -98,14 +99,18 @@
 
                     <TextView
                         android:id="@+id/screen_1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="fill_vertical"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
+                        android:paddingLeft="5dp"
                         android:text="15.6&quot;"
                         android:textColor="#686767"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/title_screen_1"
                         app:layout_constraintTop_toBottomOf="@+id/rom_1" />
 
                     <TextView
@@ -114,8 +119,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
+                        android:text="GPU"
                         android:textColor="#686767"
                         android:textSize="18sp"
+                        android:layout_gravity="fill_vertical"
+                        app:layout_constraintStart_toEndOf="@id/title_gpu_1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/screen_1" />
 
@@ -148,15 +156,20 @@
 
                     <TextView
                         android:id="@+id/cpu_1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
-                        android:text="Intel core xyz"
+                        android:paddingLeft="5dp"
+                        android:text="Intel core xyz Intel core xyz"
                         android:textColor="#686767"
                         android:textSize="18sp"
+                        android:layout_gravity="fill_vertical"
+                        app:layout_constraintStart_toEndOf="@id/title_cpu_1"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/title_ram_1"
@@ -169,7 +182,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_cpu_1" />
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_1" />
 
                     <TextView
                         android:id="@+id/title_hardDisk_1"
@@ -208,7 +221,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_screen_1" />
+                        app:layout_constraintTop_toBottomOf="@+id/screen_1" />
 
                     <TextView
                         android:id="@+id/title_os_1"
@@ -223,7 +236,7 @@
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_gpu_1" />
+                        app:layout_constraintTop_toBottomOf="@+id/gpu_1" />
 
                     <TextView
                         android:id="@+id/ram_1"
@@ -234,6 +247,7 @@
                         android:text="8GB"
                         android:textColor="#686767"
                         android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@id/title_ram_1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cpu_1" />
 
@@ -259,7 +273,7 @@
                 <ImageView
                     android:id="@+id/pic_laptop_2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     app:srcCompat="@drawable/lap_1" />
                 <TextView
                     android:id="@+id/title_laptop_2"
@@ -313,14 +327,18 @@
 
                     <TextView
                         android:id="@+id/screen_2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="fill_vertical"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
+                        android:paddingLeft="5dp"
                         android:text="15.6&quot;"
                         android:textColor="#686767"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/title_screen_2"
                         app:layout_constraintTop_toBottomOf="@+id/rom_2" />
 
                     <TextView
@@ -329,8 +347,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
+                        android:text="GPU"
                         android:textColor="#686767"
                         android:textSize="18sp"
+                        android:layout_gravity="fill_vertical"
+                        app:layout_constraintStart_toEndOf="@id/title_gpu_2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/screen_2" />
 
@@ -363,15 +384,20 @@
 
                     <TextView
                         android:id="@+id/cpu_2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="16dp"
-                        android:text="Intel core xyz"
+                        android:paddingLeft="5dp"
+                        android:text="Intel core xyz Intel core xyz"
                         android:textColor="#686767"
                         android:textSize="18sp"
+                        android:layout_gravity="fill_vertical"
+                        app:layout_constraintStart_toEndOf="@id/title_cpu_2"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/title_ram_2"
@@ -384,7 +410,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_cpu_2" />
+                        app:layout_constraintTop_toBottomOf="@+id/cpu_2" />
 
                     <TextView
                         android:id="@+id/title_hardDisk_2"
@@ -423,7 +449,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_screen_2" />
+                        app:layout_constraintTop_toBottomOf="@+id/screen_2" />
 
                     <TextView
                         android:id="@+id/title_os_2"
@@ -438,7 +464,7 @@
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_gpu_2" />
+                        app:layout_constraintTop_toBottomOf="@+id/gpu_2" />
 
                     <TextView
                         android:id="@+id/ram_2"
@@ -449,6 +475,7 @@
                         android:text="8GB"
                         android:textColor="#686767"
                         android:textSize="18sp"
+                        app:layout_constraintStart_toEndOf="@id/title_ram_2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/cpu_2" />
 

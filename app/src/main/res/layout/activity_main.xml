@@ -131,7 +131,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcv_search"
                     android:layout_width="347dp"
-                    android:layout_height="250dp"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="250dp"
                     android:background="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -140,6 +141,8 @@
                     android:translationZ="100dp"
                     android:visibility="invisible"
                     />
+
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
