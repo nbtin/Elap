@@ -83,6 +83,9 @@ public class ShowDetailActivity extends AppCompatActivity {
         getBundle();
         recycleViewCompare();
         bottomNavigation.handleNavigation("detail", homeBtn, profileBtn, cartBtn, mapBtn);
+        btnMapHandler();
+        btnShareHandler();
+
     }
 
     private void recycleViewCompare() {
