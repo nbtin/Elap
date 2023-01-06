@@ -4,18 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.midtermandroid.Adapter.BestsellerAdapter;
 import com.example.midtermandroid.Adapter.BrandAdapter;
+import com.example.midtermandroid.Adapter.SearchAdapter;
 import com.example.midtermandroid.Domain.BrandDomain;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Domain.UserDomain;
@@ -32,10 +40,15 @@ import com.google.firebase.database.Query;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView.Adapter adapter, adapterBestseller;
-    private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList;
+    private static RecyclerView.Adapter adapter, adapterBestseller, adapterBrandLaptop;
+    private static RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewBrandLaptopList, recyclerViewSearch;
+    private static SearchAdapter searchAdapter;
+    SearchView editSearch;
+    private static TextView tvBrandLaptopList;
     private TextView tvUsername;
     private ImageButton btnLogout;
     private BottomNavigation bottomNavigation = new BottomNavigation(MainActivity.this);
@@ -47,12 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout clBrand;
 
-    ArrayList<LaptopDomain> laptopList;
-
+    private static String currentBrand;
+    private static ArrayList<LaptopDomain> laptopWithBrandList;
+    private static ArrayList<LaptopDomain> laptopList;
+    ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
 
     private void mappingXML() {
+        tvBrandLaptopList = findViewById(R.id.tvBrandLap);
+
         tvUsername = findViewById(R.id.tvUsername);
         btnLogout = findViewById(R.id.btnLogout);
+
+        editSearch = (SearchView) findViewById(R.id.etSearch);
 
         homeBtn = findViewById(R.id.btnHome);
         profileBtn = findViewById(R.id.btnProfile);
@@ -63,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+
         FirebaseUser firebaseUser = LoginActivity.mAuthentication.getCurrentUser();
 
         DatabaseReference databaseRef = FirebaseDatabase
@@ -117,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Action has been cancelled!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        loadLaptopData();
     }
 
     @Override
@@ -132,6 +154,91 @@ public class MainActivity extends AppCompatActivity {
         logOut();
         recyclerViewBrandList();
         recycleViewBestseller();
+        recycleViewBrandLaptopList();
+        recycleViewSearch();
+    }
+
+    @Override
+    protected void onResume() {
+        editSearch.clearFocus();
+        super.onResume();
+    }
+
+    private void recycleViewSearch() {
+
+        recyclerViewSearch = findViewById(R.id.rcv_search);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerViewSearch.setLayoutManager(linearLayoutManager);
+
+        searchAdapter = new SearchAdapter(laptopSearch);
+        recyclerViewSearch.setAdapter(searchAdapter);
+
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerViewSearch.addItemDecoration(itemDecoration);
+
+        editSearch.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    if(laptopSearch.size() > 0){
+                        recyclerViewSearch.setVisibility(View.VISIBLE);
+                    }
+                    Handler handler = new Handler();
+                    editSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String s) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String s) {
+                            handler.removeCallbacksAndMessages(null);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    laptopSearch.clear();
+                                    if(s.trim().length() > 0){
+                                        for(LaptopDomain laptop : laptopList){
+                                            if(laptop.getTitle().toLowerCase().contains(s.toLowerCase())){
+                                                laptopSearch.add(laptop);
+                                            }
+                                        }
+                                    }
+                                    if(laptopSearch.size() > 0){
+                                        recyclerViewSearch.setVisibility(View.VISIBLE);
+                                    }
+                                    else{
+                                        recyclerViewSearch.setVisibility(View.INVISIBLE);
+                                    }
+                                    searchAdapter.notifyDataSetChanged();
+                                }
+                            }, 1000);
+
+                            return false;
+                        }
+                    });
+                }
+                else{
+                    recyclerViewSearch.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+    }
+
+    private List<LaptopDomain> getListSearch() {
+        List<LaptopDomain> list = new ArrayList<>();
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        list.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
+        return list;
     }
 
 
@@ -157,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
         brand.add(new BrandDomain("Asus", "brand_3"));
         brand.add(new BrandDomain("Acer", "brand_4"));
         brand.add(new BrandDomain("Lenovo", "brand_5"));
-
+        // TODO: add a new brand name "All"
         adapter = new BrandAdapter(brand);
         recyclerViewBrandList.setAdapter(adapter);
     }
@@ -166,23 +273,29 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
         recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
 
-
-//        laptopList.add(new LaptopDomain("Gigabyte Gaming G5 GD-51VN123SO", "lap_1", "Intel core i5 11400H/16GB/512GB/15.6\" FHD/GeForce RTX 3050 4GB/Win 11", 19490000));
-//        laptopList.add(new LaptopDomain("Asus TUF Gaming FX506LHB-HN188W", "lap_2", "Intel core i5 10300H/8GB/512GB/15.6\"FHD/GTX 1650 4GB/Win 11", 17490000));
-//        laptopList.add(new LaptopDomain("Laptop Acer Nitro Gaming AN515-57-54MV", "lap_3", "Intel core i5 11400H/8GB/512GB/15.6\"FHD/GeForce RTX 3050 4GB/Win 10", 22490000));
-//        laptopList.add(new LaptopDomain("Laptop MSI Modern 15 A5M 235VN", "lap_4", "AMD Ryzen 7 5700U/8GB/512GB/15.6\"FHD/./Win 11", 15890000));
-//        laptopList.add(new LaptopDomain("Laptop Dell Vostro V5410", "lap_5", "Intel core i5 11320H/8GB/512GB/14.0\"FHD/./Win 11", 20490000));
-//        laptopList.add(new LaptopDomain("Lenovo Yoga Slim 7 Pro 14IHU5O", "lap_6", "Intel core i5 11300H/16GB/512GB/14\"2.8K OLED/./Win 11", 20990000));
-
-        laptopList = new ArrayList<>();
         adapterBestseller = new BestsellerAdapter(laptopList);
-        recyclerViewBestsellerList.setAdapter((adapterBestseller));
 
-        loadLaptopData();
+        recyclerViewBestsellerList.setAdapter((adapterBestseller));
+    }
+
+    private void recycleViewBrandLaptopList() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewBrandLaptopList = findViewById(R.id.rvBrandLap);
+        recyclerViewBrandLaptopList.setLayoutManager(linearLayoutManager);
+
+        adapterBrandLaptop = new BestsellerAdapter(laptopWithBrandList);
+
+        recyclerViewBrandLaptopList.setAdapter(adapterBrandLaptop);
     }
 
     private void loadLaptopData(){
+        if (laptopList == null) {
+            laptopList = new ArrayList<>();
+        }
 
+        if (laptopWithBrandList == null) {
+            laptopWithBrandList = new ArrayList<>();
+        }
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://elap-7b6f1-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -192,8 +305,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
-                laptopList.add(new LaptopDomain(laptopDomain));
+                laptopList.add(laptopDomain);
+
+                if (currentBrand != null && laptopDomain.getBrandName().equals(currentBrand)) {
+                    laptopWithBrandList.add(laptopDomain);
+                    adapterBrandLaptop.notifyDataSetChanged();
+                }
+
                 adapterBestseller.notifyDataSetChanged();
+
             }
 
             @Override
@@ -217,4 +337,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static void updateLaptopWithBrandList(String brandName) {
+        if (currentBrand == null) {
+            tvBrandLaptopList.setVisibility(View.VISIBLE);
+            recyclerViewBrandLaptopList.setVisibility(View.VISIBLE);
+            currentBrand = brandName;
+        } else if (currentBrand.equals(brandName)) {
+            return;
+        } else {
+            currentBrand = brandName;
+            laptopWithBrandList.clear();
+        }
+
+        for (LaptopDomain laptopDomain: laptopList) {
+            if (laptopDomain.getBrandName().equals(currentBrand)){
+                laptopWithBrandList.add(laptopDomain);
+            }
+        }
+
+        adapterBrandLaptop.notifyDataSetChanged();
+    }
+
 }

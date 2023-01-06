@@ -1,18 +1,25 @@
 package com.example.midtermandroid.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.midtermandroid.Adapter.BestsellerAdapter;
+import com.example.midtermandroid.Adapter.CompareAdapter;
 import com.example.midtermandroid.Domain.LaptopDomain;
 import com.example.midtermandroid.Helper.BottomNavigation;
 import com.example.midtermandroid.Helper.ManagementCart;
@@ -21,8 +28,15 @@ import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.facebook.share.widget.ShareDialog;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 
@@ -54,6 +68,10 @@ public class ShowDetailActivity extends AppCompatActivity {
     private String Pic_link;
     private String Lap_name;
 
+    private RecyclerView.Adapter adapter, adapterCompare;
+    private RecyclerView recyclerViewCompareList;
+    ArrayList<LaptopDomain> laptopList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +81,70 @@ public class ShowDetailActivity extends AppCompatActivity {
 
         initView();
         getBundle();
+        recycleViewCompare();
         bottomNavigation.handleNavigation("detail", homeBtn, profileBtn, cartBtn, mapBtn);
+    }
+
+    private void recycleViewCompare() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewCompareList = findViewById(R.id.rcv_compare);
+        recyclerViewCompareList.setLayoutManager(linearLayoutManager);
+
+        laptopList = new ArrayList<>();
+        adapterCompare = new CompareAdapter(laptopList, new CompareAdapter.IClickListener(){
+            @Override
+            public void onClickCompare(LaptopDomain laptop) {
+                Intent intent = new Intent(ShowDetailActivity.this, ShowCompareActivity.class);
+                intent.putExtra("object1", object);
+                intent.putExtra("object2", laptop);
+                ShowDetailActivity.this.startActivity(intent);
+            }
+
+        });
+        recyclerViewCompareList.setAdapter((adapterCompare));
+
+        loadLaptopData();
+    }
+
+    private void loadLaptopData(){
+
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://elap-7b6f1-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        DatabaseReference laptopsRef = database.getReference("laptops");
+
+        laptopsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                LaptopDomain laptopDomain = snapshot.getValue(LaptopDomain.class);
+                if(laptopDomain.getTitle().compareTo(object.getTitle()) != 0 && Math.abs(laptopDomain.getFee() - object.getFee()) <= 500000){
+                    laptopList.add(laptopDomain);
+                }
+                adapterCompare.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
         btnMapHandler();
         btnShareHandler();
 
-
+            }
+        });
     }
 
     public static String formatter(int value) {
@@ -267,8 +344,9 @@ public class ShowDetailActivity extends AppCompatActivity {
                                 .build())
                         .build();
 
-                ShareDialog shareDialog = new ShareDialog(ShowDetailActivity.this);
-                shareDialog.show(content, ShareDialog.Mode.WEB);
+//                ShareDialog shareDialog = new ShareDialog(ShowDetailActivity.this);
+//                shareDialog.show(content, ShareDialog.Mode.WEB);
+                ShareDialog.show(ShowDetailActivity.this, content);
             }
         });
     }
