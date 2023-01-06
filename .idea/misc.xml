@@ -4,11 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/drawable/brand_background3.xml" value="0.2525" />
+        <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_cart.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_map.xml" value="0.25" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_profile.xml" value="0.33" />
-        <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_show_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/activity_show_detail.xml" value="0.22" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/bottom_navigation.xml" value="0.3428442028985507" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/viewholder_bestseller.xml" value="0.246875" />
         <entry key="..\:/Android_Studio/MidTermAndroid/app/src/main/res/layout/viewholder_brand.xml" value="0.246875" />
