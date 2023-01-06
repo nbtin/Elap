@@ -26,475 +26,472 @@
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:paddingTop="50dp">
-            <LinearLayout
+            android:paddingLeft="5dp"
+            android:stretchColumns="*">
+        <TableRow android:weightSum="10">
+            <ImageView
+                android:id="@+id/pic_laptop_1"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/lap_5"
+                android:layout_weight="5"/>
+            <ImageView
+                android:id="@+id/pic_laptop_2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/lap_6"
+                android:layout_weight="5"/>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <TextView
+                android:id="@+id/title_laptop_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Laptop Dell Vostro V5410"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_weight="5"/>
+            <TextView
+                android:id="@+id/title_laptop_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Lenovo Yoga Slim 7 Pro 14IHU5O"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_weight="5"/>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/pic_laptop_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:srcCompat="@drawable/lap_1" />
+                android:layout_margin="8dp"
+                android:layout_weight="5">
+
                 <TextView
-                    android:id="@+id/title_laptop_1"
-                    android:layout_width="match_parent"
+                    android:id="@+id/fee_laptop_1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="Title"
-                    android:layout_gravity="fill_vertical"
-                    android:textColor="#000000"
-                    android:textSize="20dp"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/unit_detail_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" đ"
+                    android:textColor="#FF0000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/fee_laptop_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="5">
+
+                <TextView
+                    android:id="@+id/fee_laptop_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/unit_detail_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" đ"
+                    android:textColor="#FF0000"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/fee_laptop_2"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                >
+                <TextView
+                    android:layout_weight="1.5"
+                    android:id="@+id/title_cpu_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="CPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/cpu_1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
-
-                    <TextView
-                        android:id="@+id/fee_laptop_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="0"
-                        android:textColor="#FF0000"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/unit_detail_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" đ"
-                        android:textColor="#FF0000"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fee_laptop_1"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="Intel core xyz Intel core xyz"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_weight="1.5"
+                    android:id="@+id/title_cpu_2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/bestseller_background"
-                    android:elevation="0dp">
-
+                    android:layout_marginTop="8dp"
+                    android:text="CPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/cpu_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="Intel core xyz Intel core xyz"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                >
+                <TextView
+                    android:layout_weight="1.5"
+                    android:id="@+id/title_ram_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="RAM"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/ram_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="16GB"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_weight="1.5"
+                    android:id="@+id/title_ram_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="RAM"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/ram_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="16GB"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                >
+                <TextView
+                    android:layout_weight="3"
+                    android:id="@+id/title_hardDisk_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Hard Disk"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/rom_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="512GB"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_weight="3"
+                    android:id="@+id/title_hardDisk_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Hark Disk"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/rom_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="512GB"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                >
+                <TextView
+                    android:layout_weight="2"
+                    android:id="@+id/title_screen_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Screen"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/screen_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="15.6"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_weight="2"
+                    android:id="@+id/title_screen_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Screen"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/screen_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="15.6"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:weightSum="10">
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                >
+                <TextView
+                    android:layout_weight="2"
+                    android:id="@+id/title_gpu_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="GPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/gpu_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="GPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_weight="2"
+                    android:id="@+id/title_gpu_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="GPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:layout_weight="4"
+                    android:id="@+id/gpu_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="5dp"
+                    android:text="GPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+        </TableRow>
+            <TableRow android:weightSum="10">
+                <LinearLayout
+                    android:layout_weight="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    >
                     <TextView
-                        android:id="@+id/screen_1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="fill_vertical"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:paddingLeft="5dp"
-                        android:text="15.6&quot;"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/title_screen_1"
-                        app:layout_constraintTop_toBottomOf="@+id/rom_1" />
-
-                    <TextView
-                        android:id="@+id/gpu_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:text="GPU"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:layout_gravity="fill_vertical"
-                        app:layout_constraintStart_toEndOf="@id/title_gpu_1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/screen_1" />
-
-                    <TextView
-                        android:id="@+id/os_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="Win 10"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/gpu_1" />
-
-                    <TextView
-                        android:id="@+id/title_cpu_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="CPU"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/cpu_1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:paddingLeft="5dp"
-                        android:text="Intel core xyz Intel core xyz"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:layout_gravity="fill_vertical"
-                        app:layout_constraintStart_toEndOf="@id/title_cpu_1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-
-                    <TextView
-                        android:id="@+id/title_ram_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="RAM"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cpu_1" />
-
-                    <TextView
-                        android:id="@+id/title_hardDisk_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Hard Disk"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_ram_1" />
-
-                    <TextView
-                        android:id="@+id/title_screen_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Screen"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_hardDisk_1" />
-
-                    <TextView
-                        android:id="@+id/title_gpu_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="GPU"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/screen_1" />
-
-                    <TextView
+                        android:layout_weight="2"
                         android:id="@+id/title_os_1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
                         android:text="OS"
                         android:textColor="#686767"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/gpu_1" />
-
+                        android:textStyle="bold" />
                     <TextView
-                        android:id="@+id/ram_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:text="8GB"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toEndOf="@id/title_ram_1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cpu_1" />
-
-                    <TextView
-                        android:id="@+id/rom_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:text="512GB"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ram_1" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/pic_laptop_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:srcCompat="@drawable/lap_1" />
-                <TextView
-                    android:id="@+id/title_laptop_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="Title"
-                    android:textColor="#000000"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
-
-                    <TextView
-                        android:id="@+id/fee_laptop_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="0"
-                        android:textColor="#FF0000"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/unit_detail_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" đ"
-                        android:textColor="#FF0000"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fee_laptop_2"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/bestseller_background"
-                    android:elevation="0dp">
-
-                    <TextView
-                        android:id="@+id/screen_2"
+                        android:layout_weight="4"
+                        android:id="@+id/os_1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="fill_vertical"
                         android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
                         android:paddingLeft="5dp"
-                        android:text="15.6&quot;"
+                        android:text="OS"
                         android:textColor="#686767"
                         android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/title_screen_2"
-                        app:layout_constraintTop_toBottomOf="@+id/rom_2" />
-
-                    <TextView
-                        android:id="@+id/gpu_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:text="GPU"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:layout_gravity="fill_vertical"
-                        app:layout_constraintStart_toEndOf="@id/title_gpu_2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/screen_2" />
-
-                    <TextView
-                        android:id="@+id/os_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="Win 10"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/gpu_2" />
-
-                    <TextView
-                        android:id="@+id/title_cpu_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="CPU"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/cpu_2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:paddingLeft="5dp"
-                        android:text="Intel core xyz Intel core xyz"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:layout_gravity="fill_vertical"
-                        app:layout_constraintStart_toEndOf="@id/title_cpu_2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         />
-
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
                     <TextView
-                        android:id="@+id/title_ram_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="RAM"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cpu_2" />
-
-                    <TextView
-                        android:id="@+id/title_hardDisk_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Hard Disk"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_ram_2" />
-
-                    <TextView
-                        android:id="@+id/title_screen_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Screen"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/title_hardDisk_2" />
-
-                    <TextView
-                        android:id="@+id/title_gpu_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="GPU"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/screen_2" />
-
-                    <TextView
+                        android:layout_weight="2"
                         android:id="@+id/title_os_2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
                         android:text="OS"
                         android:textColor="#686767"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/gpu_2" />
-
+                        app:layout_constraintTop_toTopOf="parent" />
                     <TextView
-                        android:id="@+id/ram_2"
-                        android:layout_width="wrap_content"
+                        android:layout_weight="4"
+                        android:id="@+id/os_2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:text="8GB"
+                        android:paddingLeft="5dp"
+                        android:text="OS"
                         android:textColor="#686767"
                         android:textSize="18sp"
-                        app:layout_constraintStart_toEndOf="@id/title_ram_2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cpu_2" />
-
-                    <TextView
-                        android:id="@+id/rom_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="16dp"
-                        android:text="512GB"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ram_2" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-        </LinearLayout>
-
+                        />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
     </ScrollView>
 
     <include

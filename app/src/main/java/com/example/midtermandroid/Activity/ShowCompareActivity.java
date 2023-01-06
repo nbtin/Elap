@@ -1,6 +1,7 @@
 package com.example.midtermandroid.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.util.Log;
@@ -147,6 +148,48 @@ public class ShowCompareActivity extends AppCompatActivity {
             tvGPU2.setText(token_detail_2[4]);
         }
         tvOS2.setText(token_detail_2[5]);
+
+        if(token_detail_2[0].compareTo(token_detail_1[0]) > 0){
+            tvCPU2.setTextColor(Color.rgb(200,200,0));
+        }
+        else if(token_detail_2[0].compareTo(token_detail_1[0]) < 0){
+            tvCPU1.setTextColor(Color.rgb(200,200,0));
+        }
+
+        if(token_detail_2[1].compareTo(token_detail_1[1]) > 0){
+            tvRAM1.setTextColor(Color.rgb(200,200,0));
+        }
+        else if(token_detail_2[1].compareTo(token_detail_1[1]) < 0){
+            tvRAM2.setTextColor(Color.rgb(200,200,0));
+        }
+
+        if(token_detail_2[2].compareTo(token_detail_1[2]) > 0){
+            tvROM1.setTextColor(Color.rgb(200,200,0));
+        }
+        else if(token_detail_2[2].compareTo(token_detail_1[2]) < 0){
+            tvROM2.setTextColor(Color.rgb(200,200,0));
+        }
+
+        if(token_detail_2[3].compareTo(token_detail_1[3]) > 0){
+            tvScreen1.setTextColor(Color.rgb(200,200,0));
+        }
+        else if(token_detail_2[3].compareTo(token_detail_1[3]) < 0){
+            tvScreen2.setTextColor(Color.rgb(200,200,0));
+        }
+
+        if(token_detail_2[4].compareTo(token_detail_1[4]) > 0){
+            tvGPU1.setTextColor(Color.rgb(200,200,0));
+        }
+        else if(token_detail_2[4].compareTo(token_detail_1[4]) < 0){
+            tvGPU2.setTextColor(Color.rgb(200,200,0));
+        }
+
+        if(token_detail_2[5].compareTo(token_detail_1[5]) > 0){
+            tvOS1.setTextColor(Color.rgb(200,200,0));
+        }
+        else if(token_detail_2[5].compareTo(token_detail_1[5]) < 0){
+            tvOS2.setTextColor(Color.rgb(200,200,0));
+        }
 
         // numberOrder...
 
