@@ -44,9 +44,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private static RecyclerView.Adapter adapter, adapterBestseller, adapterBrandLaptop;
-    private static RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewBrandLaptopList, recyclerViewSearch;
-    private static SearchAdapter searchAdapter;
+    private RecyclerView.Adapter adapter, adapterBestseller, adapterBrandLaptop;
+    private RecyclerView recyclerViewBrandList, recyclerViewBestsellerList, recyclerViewBrandLaptopList, recyclerViewSearch;
+    private SearchAdapter searchAdapter;
     SearchView editSearch;
     private static TextView tvBrandLaptopList;
     private TextView tvUsername;
@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout clBrand;
 
-    private static String currentBrand;
-    private static ArrayList<LaptopDomain> laptopWithBrandList;
-    private static ArrayList<LaptopDomain> laptopList;
+    private String currentBrand;
+    private ArrayList<LaptopDomain> laptopWithBrandList;
+    private ArrayList<LaptopDomain> laptopList;
     ArrayList<LaptopDomain> laptopSearch = new ArrayList<>();
 
     private void mappingXML() {
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         brand.add(new BrandDomain("Acer", "brand_4"));
         brand.add(new BrandDomain("Lenovo", "brand_5"));
         // TODO: add a new brand name "All"
-        adapter = new BrandAdapter(brand);
+        adapter = new BrandAdapter(brand, this);
         recyclerViewBrandList.setAdapter(adapter);
     }
     private void recycleViewBestseller(){
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewBestsellerList = findViewById(R.id.recyclerView2);
         recyclerViewBestsellerList.setLayoutManager(linearLayoutManager);
 
-        adapterBestseller = new BestsellerAdapter(laptopList);
+        adapterBestseller = new BestsellerAdapter(laptopList, MainActivity.this);
 
         recyclerViewBestsellerList.setAdapter((adapterBestseller));
     }
@@ -283,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewBrandLaptopList = findViewById(R.id.rvBrandLap);
         recyclerViewBrandLaptopList.setLayoutManager(linearLayoutManager);
 
-        adapterBrandLaptop = new BestsellerAdapter(laptopWithBrandList);
+        adapterBrandLaptop = new BestsellerAdapter(laptopWithBrandList, MainActivity.this);
 
         recyclerViewBrandLaptopList.setAdapter(adapterBrandLaptop);
     }
@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static void updateLaptopWithBrandList(String brandName) {
+    public void updateLaptopWithBrandList(String brandName) {
         if (currentBrand == null) {
             tvBrandLaptopList.setVisibility(View.VISIBLE);
             recyclerViewBrandLaptopList.setVisibility(View.VISIBLE);

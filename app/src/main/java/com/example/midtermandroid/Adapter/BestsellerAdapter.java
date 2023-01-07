@@ -1,5 +1,6 @@
 package com.example.midtermandroid.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.util.Log;
@@ -24,10 +25,12 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.ViewHolder> {
-    ArrayList<LaptopDomain> laptopDomains;
+    private ArrayList<LaptopDomain> laptopDomains;
+    private Context currentContext;
 
-    public BestsellerAdapter(ArrayList<LaptopDomain> laptopDomains) {
+    public BestsellerAdapter(ArrayList<LaptopDomain> laptopDomains, Context context) {
         this.laptopDomains = laptopDomains;
+        this.currentContext = context;
     }
 
     public static String formatter(int value) {
@@ -92,5 +95,13 @@ public class BestsellerAdapter extends RecyclerView.Adapter<BestsellerAdapter.Vi
             viewBtn = itemView.findViewById(R.id.btnView);
             clLaptop = itemView.findViewById(R.id.clLaptop);
         }
+    }
+
+    public Context getCurrentContext() {
+        return currentContext;
+    }
+
+    public void setCurrentContext(Context currentContext) {
+        this.currentContext = currentContext;
     }
 }
