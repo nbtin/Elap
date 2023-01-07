@@ -1,5 +1,6 @@
 package com.example.midtermandroid.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +23,12 @@ import com.example.midtermandroid.R;
 import java.util.ArrayList;
 
 public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> {
-    ArrayList<BrandDomain> brandDomains;
+    private ArrayList<BrandDomain> brandDomains;
+    private Context currentContext;
 
-    public BrandAdapter(ArrayList<BrandDomain> brandDomains) {
+    public BrandAdapter(ArrayList<BrandDomain> brandDomains, Context context) {
         this.brandDomains = brandDomains;
+        this.currentContext = context;
     }
 
     @Override
@@ -72,7 +75,12 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.ViewHolder> 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.updateLaptopWithBrandList(holder.brandName.getText().toString());
+                if (currentContext instanceof MainActivity) {
+                    MainActivity mainActivity = (MainActivity) currentContext;
+                    mainActivity.updateLaptopWithBrandList(holder.brandName.getText().toString());
+                } else {
+                    Toast.makeText(currentContext, "Action for this context has not been developed!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
