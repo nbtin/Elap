@@ -86,7 +86,7 @@
                     android:id="@+id/fee_laptop_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="24dp"
                     android:text="0"
                     android:textColor="#FF0000"
                     android:textSize="20sp"
@@ -116,7 +116,7 @@
                     android:id="@+id/fee_laptop_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="24dp"
                     android:text="0"
                     android:textColor="#FF0000"
                     android:textSize="20sp"
@@ -154,46 +154,50 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:layout_weight="4"
                     android:id="@+id/cpu_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:paddingLeft="5dp"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
                     android:text="Intel core xyz Intel core xyz"
                     android:textColor="#686767"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
+
                 <TextView
-                    android:layout_weight="1.5"
+                    android:id="@+id/cpu_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="4"
+                    android:paddingLeft="5dp"
+                    android:text="Intel core xyz Intel core xyz"
+                    android:textColor="#686767"
+                    android:textSize="18sp" />
+
+                <TextView
                     android:id="@+id/title_cpu_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1.5"
+                    android:gravity="right"
                     android:text="CPU"
                     android:textColor="#686767"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                <TextView
-                    android:layout_weight="4"
-                    android:id="@+id/cpu_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:paddingLeft="5dp"
-                    android:text="Intel core xyz Intel core xyz"
-                    android:textColor="#686767"
-                    android:textSize="18sp"
-                    />
+
             </LinearLayout>
         </TableRow>
         <TableRow android:weightSum="10">
@@ -213,35 +217,25 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:layout_weight="4"
                     android:id="@+id/ram_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:paddingLeft="5dp"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
                     android:text="16GB"
                     android:textColor="#686767"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
-                <TextView
-                    android:layout_weight="1.5"
-                    android:id="@+id/title_ram_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="RAM"
-                    android:textColor="#686767"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_weight="4"
                     android:id="@+id/ram_2"
@@ -253,6 +247,20 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     />
+
+                <TextView
+                    android:id="@+id/title_ram_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1.5"
+                    android:gravity="right"
+                    android:text="RAM"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </LinearLayout>
         </TableRow>
         <TableRow android:weightSum="10">
@@ -272,35 +280,25 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:layout_weight="4"
                     android:id="@+id/rom_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:paddingLeft="5dp"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
                     android:text="512GB"
                     android:textColor="#686767"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
-                <TextView
-                    android:layout_weight="3"
-                    android:id="@+id/title_hardDisk_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Hark Disk"
-                    android:textColor="#686767"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_weight="4"
                     android:id="@+id/rom_2"
@@ -312,6 +310,20 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     />
+
+                <TextView
+                    android:id="@+id/title_hardDisk_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="3"
+                    android:gravity="right"
+                    android:text="Hark Disk"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </LinearLayout>
         </TableRow>
         <TableRow android:weightSum="10">
@@ -321,45 +333,38 @@
                 android:layout_height="wrap_content"
                 android:paddingRight="10dp"
                 >
+
                 <TextView
-                    android:layout_weight="2"
                     android:id="@+id/title_screen_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="2"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="Screen"
                     android:textColor="#686767"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:layout_weight="4"
                     android:id="@+id/screen_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:paddingLeft="5dp"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
                     android:text="15.6"
                     android:textColor="#686767"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
-                <TextView
-                    android:layout_weight="2"
-                    android:id="@+id/title_screen_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Screen"
-                    android:textColor="#686767"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_weight="4"
                     android:id="@+id/screen_2"
@@ -371,6 +376,22 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     />
+
+                <TextView
+                    android:id="@+id/title_screen_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="2"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:text="Screen"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </LinearLayout>
         </TableRow>
         <TableRow android:weightSum="10">
@@ -390,35 +411,25 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     android:textStyle="bold" />
+
                 <TextView
-                    android:layout_weight="4"
                     android:id="@+id/gpu_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:paddingLeft="5dp"
+                    android:layout_weight="4"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
                     android:text="GPU"
                     android:textColor="#686767"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_weight="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
-                <TextView
-                    android:layout_weight="2"
-                    android:id="@+id/title_gpu_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="GPU"
-                    android:textColor="#686767"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_weight="4"
                     android:id="@+id/gpu_2"
@@ -430,6 +441,20 @@
                     android:textColor="#686767"
                     android:textSize="18sp"
                     />
+
+                <TextView
+                    android:id="@+id/title_gpu_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="2"
+                    android:gravity="right"
+                    android:text="GPU"
+                    android:textColor="#686767"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </LinearLayout>
         </TableRow>
             <TableRow android:weightSum="10">
@@ -449,35 +474,25 @@
                         android:textColor="#686767"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
                     <TextView
-                        android:layout_weight="4"
                         android:id="@+id/os_1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:paddingLeft="5dp"
+                        android:layout_weight="4"
+                        android:gravity="right"
+                        android:paddingRight="5dp"
                         android:text="OS"
                         android:textColor="#686767"
-                        android:textSize="18sp"
-                        />
+                        android:textSize="18sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_weight="5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     >
-                    <TextView
-                        android:layout_weight="2"
-                        android:id="@+id/title_os_2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="OS"
-                        android:textColor="#686767"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:layout_weight="4"
                         android:id="@+id/os_2"
@@ -489,6 +504,20 @@
                         android:textColor="#686767"
                         android:textSize="18sp"
                         />
+
+                    <TextView
+                        android:id="@+id/title_os_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="2"
+                        android:gravity="right"
+                        android:text="OS"
+                        android:textColor="#686767"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
             </TableRow>
         </TableLayout>
