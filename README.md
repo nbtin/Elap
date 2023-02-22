@@ -60,19 +60,19 @@ This app requires the following dependencies:
 
 <div class="row">
   <div class="column">
-    <img src="imgs/intro.png" alt="Image 1" style="width:32.5%">
-    <img src="imgs/login.png" alt="Image 2" style="width:32.5%">
-    <img src="imgs/home.png" alt="Image 3" style="width:32.5%">
+    <img src="imgs/intro.png" width="32.5%">
+    <img src="imgs/login.png" width="32.5%">
+    <img src="imgs/home.png" width="32.5%">
   </div>
   <div class="column">
-    <img src="imgs/detail.png" alt="Image 1" style="width:32.5%">
-    <img src="imgs/profile.png" alt="Image 2" style="width:32.5%">
-    <img src="imgs/compare.png" alt="Image 3" style="width:32.5%">
+    <img src="imgs/detail.png" width="32.5%">
+    <img src="imgs/profile.png" width="32.5%">
+    <img src="imgs/compare.png" width="32.5%">
   </div>
   <div class="column">
-    <img src="imgs/cart.jpg" alt="Image 1" style="width:32.5%">
-    <img src="imgs/location.jpg" alt="Image 2" style="width:32.5%">
-    <img src="imgs/compare_detail.jpg" alt="Image 3" style="width:32.5%">
+    <img src="imgs/cart.jpg" width="32.5%">
+    <img src="imgs/location.jpg" width="32.5%">
+    <img src="imgs/compare_detail.jpg" width="32.5%">
   </div>
 </div>
 
