@@ -1,6 +1,6 @@
 # Elap
 
-Welcome to the Elap, an E-commerce application that allows users to browse and purchase laptops on their Android devices. This app is written in Java and utilizes the Android SDK.
+Welcome to Elap, an E-commerce application that allows users to browse and purchase laptops on their Android devices. This app is written in Java and utilizes the Android SDK.
 <!-- An overview image -->
 <!-- <img src="imgs/demo.png"> -->
 
